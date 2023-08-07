@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dawn/images/favicon.png">
+  <link rel="mask-icon" href="/dawn/images/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/dawn/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin512.gitee.io","root":"/dawn/","images":"/dawn/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/dawn/js/config.js"></script>
+
+    <meta name="description" content="规则  测试用例的功能应该单一，同一个测试用例不能测试系统的不同功能。 测试用例之间应该独立，测试用例的测试行为不能依赖其他用例。 测试用例采用分层结构，测试特性按照操作相关划分子特性，子特性也可以继续划分，不同层次使用用例模板中的“级别”来进行区分 用力中用到数字描述应该使用阿拉伯数字，不能使用汉字 不要使用含糊不清的词语 每个测试特性下的用例规模建议不超过100个 测试用例整体">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【软件测试】测试报告编写规范">
+<meta property="og:url" content="https://zclin512.gitee.io/dawn/2021/07/25/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%955/index.html">
+<meta property="og:site_name" content="破晓时分">
+<meta property="og:description" content="规则  测试用例的功能应该单一，同一个测试用例不能测试系统的不同功能。 测试用例之间应该独立，测试用例的测试行为不能依赖其他用例。 测试用例采用分层结构，测试特性按照操作相关划分子特性，子特性也可以继续划分，不同层次使用用例模板中的“级别”来进行区分 用力中用到数字描述应该使用阿拉伯数字，不能使用汉字 不要使用含糊不清的词语 每个测试特性下的用例规模建议不超过100个 测试用例整体">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-25T13:41:44.000Z">
+<meta property="article:modified_time" content="2023-08-05T14:01:13.293Z">
+<meta property="article:author" content="DawN">
+<meta property="article:tag" content="软件测试">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zclin512.gitee.io/dawn/2021/07/25/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%955/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin512.gitee.io/dawn/2021/07/25/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%955/","path":"2021/07/25/软件测试/软件测试5/","title":"【软件测试】测试报告编写规范"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【软件测试】测试报告编写规范 | 破晓时分</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/dawn/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/dawn/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">破晓时分</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">黎明将至</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/dawn/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/dawn/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/dawn/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%84%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text">规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E4%BE%8B%E7%BA%A7%E5%88%AB%E5%88%92%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">用例级别划分</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DawN</p>
+  <div class="site-description" itemprop="description">记录 归档 输出</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/dawn/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/dawn/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/dawn/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zclin512.gitee.io/dawn/2021/07/25/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%955/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dawn/images/avatar.gif">
+      <meta itemprop="name" content="DawN">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="破晓时分">
+      <meta itemprop="description" content="记录 归档 输出">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【软件测试】测试报告编写规范 | 破晓时分">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【软件测试】测试报告编写规范
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-25 21:41:44" itemprop="dateCreated datePublished" datetime="2021-07-25T21:41:44+08:00">2021-07-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-05 22:01:13" itemprop="dateModified" datetime="2023-08-05T22:01:13+08:00">2023-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/dawn/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">软件测试</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="规则">规则</h3>
+<ul>
+<li>测试用例的功能应该单一，同一个测试用例不能测试系统的不同功能。</li>
+<li>测试用例之间应该独立，测试用例的测试行为不能依赖其他用例。</li>
+<li>测试用例采用分层结构，测试特性按照操作相关划分子特性，子特性也可以继续划分，不同层次使用用例模板中的“级别”来进行区分</li>
+<li>用力中用到数字描述应该使用阿拉伯数字，不能使用汉字</li>
+<li>不要使用含糊不清的词语</li>
+<li>每个测试特性下的用例规模建议不超过100个</li>
+<li>测试用例整体分层不宜过高，建议不超过5层</li>
+</ul>
+<p>完整的测试用例必须包含以下信息： <span id="more"></span> -
+<strong>测试编号</strong>：开发项目编号 -
+<strong>测试项目</strong>：不要出现特殊字符 -
+<strong>测试用例名称</strong>：概括描述测试用例的测试点，无二义性，不宜过长，不超过40字符，各种信息覆盖
+-
+<strong>测试用例编号</strong>：以“TC-需求编号”开头，唯一确定该用例，切用于给测试用例排序
+- <strong>重要级别</strong> -
+<strong>测试类型</strong>：表示该用力的类别，功能测试，兼容性测试，性能测试，互操作测试，安全性测试，协议一致性测试，安装测试，配置测试，可用性测试，压力测试，故障输入测试，备份测试，回复测试
+-
+<strong>预置条件</strong>：给出执行该测试用例的预置条件（如环境设置，特性参数，系统参数，操作员权限都需要详述），描述运行环境状态要求，用例前需要的操作
+-
+<strong>测试步骤</strong>：提供测试执行过程的详细步骤，步骤过程中的任何操作，任何设置和环境操作，都应该写明。步骤过程中的任何预期输出，应该在此写明，获取预期结果的任何手段，也应该在此写明。
+-
+<strong>预期输出</strong>：测试用例的正确执行结果，可能是需要经过分析的结果
+- <strong>用例是否自动化</strong> - <strong>作者</strong> -
+<strong>备注</strong></p>
+<h3 id="用例级别划分">用例级别划分</h3>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 81%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>用例级别</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Level 0</td>
+<td>属于ATP用例，基线用例</td>
+</tr>
+<tr class="even">
+<td>基本（level1）</td>
+<td>对于需求上明确描述的、新增的、验证基本功能的测试用例一定要定义为基本用例。基本系统测试用例是保证系统的基本功能的，并且要提交给开发进行预测试的。当然为了保证基本用例的比例不能太高，只需吧一种功能验证中的一个用例定为基本，其余的扩展用例定为重要即可，基本用例一般占所有用例的5%~10%为宜</td>
+</tr>
+<tr class="odd">
+<td>重要（level2）</td>
+<td>一些需求上描述不清楚的功能、或者是一些主程序的扩展功能，根据概述中的条件分支语句得出的用例，可以划分为重要级别，对于一些很常见的操作，也应该列入重要级别。重要用例一般占所有用例的40%~50%为宜</td>
+</tr>
+<tr class="even">
+<td>一般（level3）</td>
+<td>如果是一些比较一般的情况，如需求上不关注，但是接口中存在的一些功能，操作上也比较少见，或者为了以后系统的升级而隐含的扩展功能，也可以定义为详细级别。详细用例一般占所有用例的30%~40%为宜</td>
+</tr>
+<tr class="odd">
+<td>生僻（level4）</td>
+<td>人为的构造一些不符合逻辑的用例、或者有些情况只有人为才能产生。生僻用例也不宜过多，否则容易钻牛角尖，生僻用例一般占所有用例的5%为宜</td>
+</tr>
+</tbody>
+</table>
+<p><strong>其他</strong></p>
+<ul>
+<li>备注可以填写业务执行中需要的SQL语句等其他信息</li>
+<li>不要出现同山等模糊描述</li>
+<li>新增接口必须针对每个字段进行详细验证</li>
+<li>修改接口主要针对修改字段进行测试，同时验证对字段取值有影响的其他字段</li>
+<li>有取值字典的字段必须覆盖所有字典项</li>
+<li>用例设计注意端到端输出</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/dawn/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" rel="tag"># 软件测试</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E7%A9%BA%E9%97%B4%E6%BB%A4%E6%B3%A2/" rel="next" title="空间滤波">
+                  空间滤波 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">DawN</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/dawn/js/comments.js"></script><script src="/dawn/js/utils.js"></script><script src="/dawn/js/motion.js"></script><script src="/dawn/js/schemes/muse.js"></script><script src="/dawn/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/dawn/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

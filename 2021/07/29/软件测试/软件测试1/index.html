@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dawn/images/favicon.png">
+  <link rel="mask-icon" href="/dawn/images/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/dawn/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin512.gitee.io","root":"/dawn/","images":"/dawn/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/dawn/js/config.js"></script>
+
+    <meta name="description" content="一.定义 软件测试是在软件投入正式运行前对需求分析、设计和编码的结果进行复查的活动。 测试与调试的区别：  目的不同：测试是发现错误；调试是改正&#x2F;修正错误 过程不同：测试活动是有序、可重复的活动，有较完备的工程方法支撑；调试则是不可重复的活动，针对具体问题&#x2F;具体源程序不具备重复性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【软件测试】基本概念">
+<meta property="og:url" content="https://zclin512.gitee.io/dawn/2021/07/29/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%951/index.html">
+<meta property="og:site_name" content="破晓时分">
+<meta property="og:description" content="一.定义 软件测试是在软件投入正式运行前对需求分析、设计和编码的结果进行复查的活动。 测试与调试的区别：  目的不同：测试是发现错误；调试是改正&#x2F;修正错误 过程不同：测试活动是有序、可重复的活动，有较完备的工程方法支撑；调试则是不可重复的活动，针对具体问题&#x2F;具体源程序不具备重复性。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-29T13:34:27.000Z">
+<meta property="article:modified_time" content="2023-08-07T01:44:18.730Z">
+<meta property="article:author" content="DawN">
+<meta property="article:tag" content="软件测试">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zclin512.gitee.io/dawn/2021/07/29/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%951/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin512.gitee.io/dawn/2021/07/29/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%951/","path":"2021/07/29/软件测试/软件测试1/","title":"【软件测试】基本概念"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【软件测试】基本概念 | 破晓时分</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/dawn/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/dawn/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">破晓时分</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">黎明将至</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/dawn/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/dawn/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/dawn/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80.%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">一.定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89.%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">三.对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B.%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="nav-number">3.</span> <span class="nav-text">四.输入输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94.%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">五.软件缺陷类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD.%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B"><span class="nav-number">5.</span> <span class="nav-text">六.软件测试流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83.%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB"><span class="nav-number">6.</span> <span class="nav-text">七.测试分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%8D%81%E5%A4%A7%E5%87%86%E4%BE%A7"><span class="nav-number">7.</span> <span class="nav-text">软件测试十大准侧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%8D%81%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">8.</span> <span class="nav-text">软件测试十佳实践</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DawN</p>
+  <div class="site-description" itemprop="description">记录 归档 输出</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/dawn/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/dawn/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/dawn/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zclin512.gitee.io/dawn/2021/07/29/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%951/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dawn/images/avatar.gif">
+      <meta itemprop="name" content="DawN">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="破晓时分">
+      <meta itemprop="description" content="记录 归档 输出">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【软件测试】基本概念 | 破晓时分">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【软件测试】基本概念
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-29 21:34:27" itemprop="dateCreated datePublished" datetime="2021-07-29T21:34:27+08:00">2021-07-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-07 09:44:18" itemprop="dateModified" datetime="2023-08-07T09:44:18+08:00">2023-08-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/dawn/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">软件测试</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="一.定义">一.定义</h3>
+<p>软件测试是在软件投入正式运行前对需求分析、设计和编码的结果进行复查的活动。</p>
+<p>测试与调试的区别：</p>
+<ul>
+<li>目的不同：测试是发现错误；调试是改正/修正错误</li>
+<li>过程不同：测试活动是有序、可重复的活动，有较完备的工程方法支撑；调试则是不可重复的活动，针对具体问题/具体源程序不具备重复性。
+<span id="more"></span> ### 二.目的原则</li>
+</ul>
+<p>目的：发现软件开发各阶段的问题</p>
+<p>原则：</p>
+<ul>
+<li>尽早的、不断的进行软件测试</li>
+<li>明确测试输入预置条件和与之对应的预期输出结果</li>
+<li>避免测试自己编写的程序</li>
+<li>在测试设计时应充分考虑异常的输入情况</li>
+<li>充分考虑测试中的集群现象，80%的错误集中在20%的程序模块中</li>
+<li>排除测试的随意性</li>
+<li>对测试结果做全面检查</li>
+<li>妥善保存测试计划，测试用例，出错统计和最终分析结果</li>
+<li>所有的测试应该追溯到用户需求</li>
+<li>测试应该从“小规模”开始，逐步转向“大规模”即渐增式build测试</li>
+</ul>
+<h3 id="三.对象">三.对象</h3>
+<p>软件测试不仅仅局限于软件程序的测试，测试活动贯穿于软件开发过程的整个周期中，因此，<strong>需求分析</strong>、<strong>概要设计</strong>、<strong>详细设计</strong>以及<strong>编码</strong>各阶段所得到的交付件，包括设计文档，源代码，应用程序乃至随软件版本发布的资料，都是软件测试的对象。</p>
+<h3 id="四.输入输出">四.输入输出</h3>
+<p>输入：</p>
+<ol type="1">
+<li>软件配置：软件需求规格说明书，软件设计说明书，源代码</li>
+<li>测试配置：测试计划、测试用例、测试环境、测试辅助程序</li>
+<li>为提高软件测试效率，可使用测试工具支持测试工作，其作用就是为测试的实施提供服务，以减少人们完成测试任务中的手工劳作。</li>
+</ol>
+<p>输出：</p>
+<p>​ 问题报告单，测试总结/报告、测试度量数据、新增用例</p>
+<h3 id="五.软件缺陷类型">五.软件缺陷类型</h3>
+<ul>
+<li>遗漏：规定的或预期的需求未能体现在产品中（可能未将规格说明全面实现，也可能需求分析阶段就有遗漏的需求）</li>
+<li>错误：未将规格说明正确实现（可能设计错误，也可能编码错误）</li>
+<li>额外的实现：规格说明并未规定的需求被纳入到产品，得到实现</li>
+</ul>
+<h3 id="六.软件测试流程">六.软件测试流程</h3>
+<p>测试准备 -&gt; 测试计划 -&gt; 测试设计 -&gt; 测试执行 -&gt;
+测试完成</p>
+<h3 id="七.测试分类">七.测试分类</h3>
+<ol type="1">
+<li>按技术划分：黑盒测试、灰盒测试、白盒测试</li>
+<li>按阶段划分：单元测试-集成测试-系统测试-验收测试</li>
+<li>按内容划分：功能测试、性能测试、兼容测试</li>
+<li>按其他划分：冒烟测试、回归测试、安全测试、易用性测试、本地化测试、国际化测试、静态测试、动态测试</li>
+<li>常用的三种策略：正式验收测试、Alpha测试、Beta测试</li>
+</ol>
+<h3 id="软件测试十大准侧">软件测试十大准侧</h3>
+<ol type="1">
+<li>测试是一个持续进行的过程，而不是一个阶段</li>
+<li>测试必须备计划、被控制，并且被提供时间和资源</li>
+<li>测试应当分级别</li>
+<li>测试应当有重点</li>
+<li>测试不是为了证明程序的正确性，而是为了证明程序不能工作</li>
+<li>测试不可能穷尽，当测试出口条件满足时就可以停止测试</li>
+<li>测试是开发的朋友，不是开发的敌人</li>
+<li>测试人员应当站在公正的立场上进行测试，如实地记录和报告缺陷</li>
+<li>测试自动化能解决一部分问题，但不是全部</li>
+<li>测试不能仅仅包含功能性的验证，要应当包含性能、可靠性、可维护性、安全性等方面的验证</li>
+</ol>
+<h3 id="软件测试十佳实践">软件测试十佳实践</h3>
+<ol type="1">
+<li>尽早的繁琐的进行测试是降低项目成本，提高质量的一个好的实践</li>
+<li>尽早的产生一个综合的主测试计划</li>
+<li>对质量要求较高的产品或大型负责的产品成立独立的测试组</li>
+<li>每个开发阶段，使用测试和评价的结果作为是否可以通过的标准</li>
+<li>开发和维护一个测试需求和目标风险优先级列表</li>
+<li>把测试作为产品的一部分等同管理起来，使用相同的评价标准和过程</li>
+<li>提供集成化的测试工具和测试基础支持</li>
+<li>加强测试度量工作和缺陷分析工作，不断的改进测试</li>
+<li>加强测试的培训并为测试人员提供技能发展的通道</li>
+<li>加强沟通和交流，让项目组内所有的人员都了解测试的重要性和测试的工作。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/dawn/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" rel="tag"># 软件测试</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/dawn/2021/07/29/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/window%E5%AF%B9%E8%B1%A1/" rel="prev" title="window对象">
+                  <i class="fa fa-angle-left"></i> window对象
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/dawn/2021/07/30/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E4%BA%8C%E5%80%BC%E5%8C%96/" rel="next" title="二值化">
+                  二值化 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">DawN</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/dawn/js/comments.js"></script><script src="/dawn/js/utils.js"></script><script src="/dawn/js/motion.js"></script><script src="/dawn/js/schemes/muse.js"></script><script src="/dawn/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/dawn/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

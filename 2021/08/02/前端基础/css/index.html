@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dawn/images/favicon.png">
+  <link rel="mask-icon" href="/dawn/images/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/dawn/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin512.gitee.io","root":"/dawn/","images":"/dawn/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/dawn/js/config.js"></script>
+
+    <meta name="description" content="简介： 层叠样式表是为网页添加样式的代码，与HTML类似，不是真正的编程语言，是一门样式表语言，主要是用来给html添加样式的。 样式声明 外部样式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css">
+<meta property="og:url" content="https://zclin512.gitee.io/dawn/2021/08/02/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/css/index.html">
+<meta property="og:site_name" content="破晓时分">
+<meta property="og:description" content="简介： 层叠样式表是为网页添加样式的代码，与HTML类似，不是真正的编程语言，是一门样式表语言，主要是用来给html添加样式的。 样式声明 外部样式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zclin512.gitee.io/dawn/2021/08/02/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/css/Untitled.png">
+<meta property="og:image" content="https://zclin512.gitee.io/dawn/2021/08/02/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/css/Untitled1.png">
+<meta property="article:published_time" content="2021-08-02T12:59:36.000Z">
+<meta property="article:modified_time" content="2023-08-07T06:57:41.193Z">
+<meta property="article:author" content="DawN">
+<meta property="article:tag" content="html">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="前端基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zclin512.gitee.io/dawn/2021/08/02/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/css/Untitled.png">
+
+
+<link rel="canonical" href="https://zclin512.gitee.io/dawn/2021/08/02/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/css/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin512.gitee.io/dawn/2021/08/02/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/css/","path":"2021/08/02/前端基础/css/","title":"css"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>css | 破晓时分</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/dawn/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/dawn/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">破晓时分</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">黎明将至</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/dawn/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/dawn/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/dawn/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F%E5%A3%B0%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">样式声明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">外部样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5%E6%A0%B7%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">嵌入样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E8%81%94%E6%A0%B7%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">内联样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E6%A0%B7%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">导入样式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">基本选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">2.2.</span> <span class="nav-text">结构选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">2.3.</span> <span class="nav-text">属性选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">2.4.</span> <span class="nav-text">伪类选择器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E6%9D%83%E9%87%8D"><span class="nav-number">3.</span> <span class="nav-text">元素权重</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%87%8D%E5%80%BC"><span class="nav-number">3.1.</span> <span class="nav-text">权重值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E8%A7%84%E5%88%99"><span class="nav-number">3.2.</span> <span class="nav-text">继承规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">盒子模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.1.</span> <span class="nav-text">标准盒模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ie%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.2.</span> <span class="nav-text">IE盒子模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%96%E8%BE%B9%E8%B7%9D-margin"><span class="nav-number">4.3.</span> <span class="nav-text">外边距 margin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E8%BE%B9%E8%B7%9D-padding"><span class="nav-number">4.4.</span> <span class="nav-text">内边距 padding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E6%A1%86-border"><span class="nav-number">4.5.</span> <span class="nav-text">边框 border</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#display"><span class="nav-number">4.6.</span> <span class="nav-text">display</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#visibility"><span class="nav-number">4.7.</span> <span class="nav-text">visibility</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%A2%E5%87%BA%E6%8E%A7%E5%88%B6-overflow"><span class="nav-number">4.8.</span> <span class="nav-text">溢出控制 overflow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E6%A0%B7%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">背景样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%92%E5%AD%90%E9%98%B4%E5%BD%B1"><span class="nav-number">5.1.</span> <span class="nav-text">盒子阴影</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80"><span class="nav-number">6.</span> <span class="nav-text">浮动布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E5%B8%83%E5%B1%80"><span class="nav-number">7.</span> <span class="nav-text">定位布局</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E7%B1%BB%E5%9E%8B"><span class="nav-number">7.1.</span> <span class="nav-text">定位类型</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DawN</p>
+  <div class="site-description" itemprop="description">记录 归档 输出</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/dawn/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/dawn/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/dawn/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zclin512.gitee.io/dawn/2021/08/02/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dawn/images/avatar.gif">
+      <meta itemprop="name" content="DawN">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="破晓时分">
+      <meta itemprop="description" content="记录 归档 输出">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="css | 破晓时分">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          css
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-02 20:59:36" itemprop="dateCreated datePublished" datetime="2021-08-02T20:59:36+08:00">2021-08-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-07 14:57:41" itemprop="dateModified" datetime="2023-08-07T14:57:41+08:00">2023-08-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/dawn/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>简介：</p>
+<p>层叠样式表是为网页添加样式的代码，与HTML类似，不是真正的编程语言，是一门样式表语言，主要是用来给html添加样式的。</p>
+<h2 id="样式声明">样式声明</h2>
+<h3 id="外部样式">外部样式</h3>
+<span id="more"></span>
+<p>使用link标签引入外部样式文件，需要注意如下：</p>
+<ul>
+<li>link标签放在head标签内部</li>
+<li>样式文件需要以.css结尾</li>
+<li>一个页面往往需要多个样式文件</li>
+</ul>
+<p>rel 定义当前文档与被链接文档之间的关系</p>
+<p>href 外部样式文件</p>
+<p>type 文档类型</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;test<span class="selector-class">.css</span>&quot; type=&quot;text/css&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="嵌入样式">嵌入样式</h3>
+<p>使用style标签样式规则放到文档内部定义。</p>
+<h3 id="内联样式">内联样式</h3>
+<p>直接在某个标签中使用style来定义的</p>
+<h3 id="导入样式">导入样式</h3>
+<p>使用@import
+可以在原样式规则中导入其他样式表，可以在外部样式，style标签中使用。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;test.css&quot;</span></span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">	@import url(<span class="string">&quot;test.css&quot;</span>)</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="选择器">选择器</h2>
+<h3 id="基本选择器">基本选择器</h3>
+<ul>
+<li>*：选择所有元素</li>
+<li>. ：选择class内的所有元素</li>
+<li># ：选择id内的所有元素</li>
+<li>div：元素选择器</li>
+</ul>
+<h3 id="结构选择器">结构选择器</h3>
+<ul>
+<li>div, p：选择所有div标签和p标签的元素</li>
+<li>div p：选择div标签内部的p元素</li>
+<li>div&gt;p:：选择父元素为div的所有p元素</li>
+<li>div+p：选择紧接在div标签之后的所有p标签元素</li>
+<li>p~ul：选择p元素之后的每个ul元素</li>
+</ul>
+<h3 id="属性选择器">属性选择器</h3>
+<ul>
+<li>[target]：带有target属性的所有元素</li>
+<li>[target=_blank]：target属性等于"_blank"的所有元素</li>
+<li>[title~=test]：title 属性包含单词 "test" 的所有元素</li>
+<li>[title|=test]：title属性为test的单词或以-连接的独立单词</li>
+<li>a[src*="test"] ：src 属性中包含 "test" 字符的每个 元素</li>
+<li>a[src^="https"] ：src 属性值以 "https" 开头的每个 元素</li>
+<li>[attribute<span
+class="math inline">\(=value]：：a[src\)</span>=".jpeg"] src 属性以
+".jpeg" 结尾的所有 元素</li>
+</ul>
+<h3 id="伪类选择器">伪类选择器</h3>
+<ul>
+<li>a:link：选择所有未被访问的链接</li>
+<li>a:visited ：选择所有已被访问的链接</li>
+<li>:hover ：鼠标移动到元素上时</li>
+<li>:active：点击正在发生时</li>
+<li>:focus：选择获得焦点的input元素</li>
+<li>:first-child：选择属于父元素的第一个子元素的每个元素</li>
+<li>:last-child：选择属于父元素的最后一个子元素的每个元素</li>
+<li>p:nth-child(n)：选择属于其父元素的第n个子元素的每个元素，可以使用n进行计算</li>
+<li>p:nth-child(odd)：选择属于其父元素的奇数元素</li>
+<li>p:nth-child(even)：选择属于其父元素的偶数元素</li>
+</ul>
+<h2 id="元素权重">元素权重</h2>
+<h3 id="权重值">权重值</h3>
+<p>多个样式作用于同一个元素时会按照不同权重优先级来展示其真正产生作用的效果，层叠样式表由此诞生。使用类，id，伪类都有不同的权重，具体需要看权限大小。同时可以使用
+!important 强制提升某个规则的权限。</p>
+<p>权重规则：</p>
+<ul>
+<li>行内样式style：1000</li>
+<li>id： 0100</li>
+<li>class： 0010</li>
+<li>标签，伪元素：0001</li>
+<li>*： 0000</li>
+</ul>
+<h3 id="继承规则">继承规则</h3>
+<p>子元素可以继承父元素设置的样式。但</p>
+<ul>
+<li>子元素不会继承父元素的所有演示，比如边框，高度等不会继承</li>
+<li>继承的规则没有权重</li>
+</ul>
+<h2 id="盒子模型">盒子模型</h2>
+<h3 id="标准盒模型">标准盒模型</h3>
+<p><img src="Untitled.png" /></p>
+<h3 id="ie盒子模型">IE盒子模型</h3>
+<p><img src="Untitled1.png" /></p>
+<h3 id="外边距-margin">外边距 margin</h3>
+<p>边距顺序依次为：上、右、下、左</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">margin</span>:<span class="number">10px</span> <span class="number">10px</span> <span class="number">20px</span> <span class="number">20px</span>;</span><br></pre></td></tr></table></figure>
+<p>设置auto之后，浏览器会自动居中，需要区分上下，左右。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">margin</span>:<span class="number">0</span> auto;</span><br></pre></td></tr></table></figure>
+<h3 id="内边距-padding">内边距 padding</h3>
+<p>顺序同margin，但是不存在auto属性。</p>
+<p>内外边距都可以使用 top，left，right，bottom单独来进行控制</p>
+<h3 id="边框-border">边框 border</h3>
+<ul>
+<li>类型
+border-style，可以单独设置每条边的，也可以统一设置四条边，顺序上右下左。
+<ul>
+<li>none： 定义无边框。</li>
+<li>dotted： 定义点状边框。在大多数浏览器中呈现为实线。</li>
+<li>dashed： 定义虚线。在大多数浏览器中呈现为实线。</li>
+<li>solid： 定义实线。</li>
+<li>double： 定义双线。双线的宽度等于 border-width 的值。</li>
+<li>groove： 定义 3D 凹槽边框。其效果取决于 border-color 的值。</li>
+<li>ridge： 定义 3D 垄状边框。其效果取决于 border-color 的值。</li>
+<li>inset： 定义 3D inset 边框。其效果取决于 border-color 的值。</li>
+<li>outset： 定义 3D outset 边框。其效果取决于 border-color 的值。</li>
+</ul></li>
+<li>宽度 border-width，颜色border-color等 原理同上</li>
+<li>圆角边框 border-radius：可以使用px或者%等单位，也可以分别设置</li>
+<li>轮廓线：outline：颜色，样式，线宽都可以单独设置或者组合定义。</li>
+</ul>
+<h3 id="display">display</h3>
+<p>控制显示隐藏，元素的显示机制</p>
+<ul>
+<li>none：隐藏元素</li>
+<li>block：显示为块元素</li>
+<li>inline：显示为行元素，不能设置宽高</li>
+<li>inline-block：行级块元素，允许设置宽高</li>
+</ul>
+<h3 id="visibility">visibility</h3>
+<p>控制元素显示隐藏，在隐藏后，空间位依旧保留。</p>
+<h3 id="溢出控制-overflow">溢出控制 overflow</h3>
+<ul>
+<li>hidden：溢出内容隐藏</li>
+<li>scroll：显示滚动条</li>
+<li>auto：根据内容自动处理滚动条</li>
+</ul>
+<h2 id="背景样式">背景样式</h2>
+<ul>
+<li>颜色：可以使用rgb，rgba，十六进制等格式，background-color
+<ul>
+<li>颜色背景可以设置渐变色，linear-gradient</li>
+</ul></li>
+<li>图片：background-image:url(***.jpg),可以使用jpg,png,gif等</li>
+</ul>
+<h3 id="盒子阴影">盒子阴影</h3>
+<p>使用box-shadow对盒子元素设置阴影，参数为
+水平偏移，竖直偏移，模糊度，颜色。</p>
+<h2 id="浮动布局">浮动布局</h2>
+<p>float属性定义元素在哪个方向浮动，在css中，任何元素都可以浮动，浮动元素会生成一个块级框，而不论本身是何种元素。</p>
+<p>取值：</p>
+<ul>
+<li>left：向左浮动</li>
+<li>right：向右浮动</li>
+<li>none：不浮动</li>
+</ul>
+<p>文档流：</p>
+<p>没有设置浮动的块元素独占一行，浮动是对后面元素的影响。</p>
+<p>两个元素只给第一个浮动的话，后边元素会占用第一个元素空间。</p>
+<p>两个都浮动时会并列显示。</p>
+<p>分别设置左右浮动，可以调整布局。</p>
+<p>浮动后悔贬称个块级元素，即可设置宽高。</p>
+<p>清除浮动：不希望下边元素收到浮动元素影响时，可以清除浮动。</p>
+<p>clear：</p>
+<p>left（左边远离浮动元素）</p>
+<p>right（右边远离浮动元素）</p>
+<p>both（左右都远离浮动元素）</p>
+<p>after：使用::after伪类为父元素添加后标签，实现清除浮动影响。</p>
+<p>overflow：（overflow：hidden）</p>
+<p>子元素使用浮动后将不占用空间，这时父元素高度为将为零。通过添加父元素并设置 <code>overflow</code> 属性可以清除浮动。</p>
+<p>将会使用父元素产生 <code>BFC</code> 机制，即父元素的高度计算会包括浮动元素的高度。</p>
+<h2 id="定位布局">定位布局</h2>
+<p>定位的基本思想：允许定义元素框相对于其正常位置应该出现的位置，或者相对于父元素，另一个元素甚至浏览器窗口本身的位置。</p>
+<h3 id="定位类型">定位类型</h3>
+<ul>
+<li>static：默认定位
+<ul>
+<li>如果没有为定位元素设置偏移，将受父元素的padding等元素影响，但使用定位一般会设置偏移位置。</li>
+</ul></li>
+<li>relative：相对定位
+<ul>
+<li>相对于元素原来的位置控制，当元素发生位置偏移时，原位置留白</li>
+</ul></li>
+<li>absolute：绝对定位
+<ul>
+<li>不受文档流影响，绝对定位元素拥有行内块特性</li>
+<li>如果父级元素设置了relative|fixed|sticky，绝对定位子元素将参照父元素进行定位</li>
+</ul></li>
+<li>fixed：固定位置</li>
+<li>sticky：粘性定位
+<ul>
+<li>相当于excel表格冻结首行</li>
+</ul></li>
+</ul>
+<p>偏移量 ：top，bottom，left，right</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/dawn/tags/html/" rel="tag"># html</a>
+              <a href="/dawn/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+              <a href="/dawn/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" rel="tag"># 前端基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/dawn/2021/07/30/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E4%BA%8C%E5%80%BC%E5%8C%96/" rel="prev" title="二值化">
+                  <i class="fa fa-angle-left"></i> 二值化
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/dawn/2021/09/26/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F%EF%BC%9Ahash%E5%92%8Chistory%E5%8C%BA%E5%88%AB/" rel="next" title="路由模式：hash和history区别">
+                  路由模式：hash和history区别 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">DawN</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/dawn/js/comments.js"></script><script src="/dawn/js/utils.js"></script><script src="/dawn/js/motion.js"></script><script src="/dawn/js/schemes/muse.js"></script><script src="/dawn/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/dawn/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

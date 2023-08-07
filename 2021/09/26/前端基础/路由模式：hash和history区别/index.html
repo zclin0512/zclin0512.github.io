@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dawn/images/favicon.png">
+  <link rel="mask-icon" href="/dawn/images/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/dawn/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin512.gitee.io","root":"/dawn/","images":"/dawn/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/dawn/js/config.js"></script>
+
+    <meta name="description" content="hash模式 示例：https:&#x2F;&#x2F;www.fxiaoke.com&#x2F;XV&#x2F;Home&#x2F;Index#plan url与hash值之间有#链接， hash值发生变化时浏览器不会发起请求，但会触发window.hashChange事件。通过监听事件的变化，达到页面变化，路由跳转的目的。 history模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="路由模式：hash和history区别">
+<meta property="og:url" content="https://zclin512.gitee.io/dawn/2021/09/26/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F%EF%BC%9Ahash%E5%92%8Chistory%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="破晓时分">
+<meta property="og:description" content="hash模式 示例：https:&#x2F;&#x2F;www.fxiaoke.com&#x2F;XV&#x2F;Home&#x2F;Index#plan url与hash值之间有#链接， hash值发生变化时浏览器不会发起请求，但会触发window.hashChange事件。通过监听事件的变化，达到页面变化，路由跳转的目的。 history模式">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-26T12:59:36.000Z">
+<meta property="article:modified_time" content="2023-08-07T02:03:15.554Z">
+<meta property="article:author" content="DawN">
+<meta property="article:tag" content="html">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="前端基础">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zclin512.gitee.io/dawn/2021/09/26/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F%EF%BC%9Ahash%E5%92%8Chistory%E5%8C%BA%E5%88%AB/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin512.gitee.io/dawn/2021/09/26/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F%EF%BC%9Ahash%E5%92%8Chistory%E5%8C%BA%E5%88%AB/","path":"2021/09/26/前端基础/路由模式：hash和history区别/","title":"路由模式：hash和history区别"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>路由模式：hash和history区别 | 破晓时分</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/dawn/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/dawn/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">破晓时分</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">黎明将至</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/dawn/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/dawn/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/dawn/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hash%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">hash模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#history%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">history模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">区别</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DawN</p>
+  <div class="site-description" itemprop="description">记录 归档 输出</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/dawn/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/dawn/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/dawn/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zclin512.gitee.io/dawn/2021/09/26/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F%EF%BC%9Ahash%E5%92%8Chistory%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dawn/images/avatar.gif">
+      <meta itemprop="name" content="DawN">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="破晓时分">
+      <meta itemprop="description" content="记录 归档 输出">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="路由模式：hash和history区别 | 破晓时分">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          路由模式：hash和history区别
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-26 20:59:36" itemprop="dateCreated datePublished" datetime="2021-09-26T20:59:36+08:00">2021-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-07 10:03:15" itemprop="dateModified" datetime="2023-08-07T10:03:15+08:00">2023-08-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/dawn/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="hash模式">hash模式</h2>
+<p>示例：https://www.fxiaoke.com/XV/Home/Index#plan</p>
+<p>url与hash值之间有#链接，</p>
+<p>hash值发生变化时浏览器不会发起请求，但会触发window.hashChange事件。通过监听事件的变化，达到页面变化，路由跳转的目的。</p>
+<h2 id="history模式">history模式</h2>
+<span id="more"></span>
+<p>示例：https://www.fxiaoke.com/XV/Home/Index/plan</p>
+<p>history模式基于window.history对象的方法</p>
+<p>在HTML4中，已经支持window.history对象来控制页面历史记录跳转，常用的方法包括：</p>
+<ul>
+<li>history.forward(); //在历史记录中前进一步</li>
+<li>history.back(); //在历史记录中后退一步</li>
+<li>history.go(n):
+//在历史记录中跳转n步骤，n=0为刷新本页,n=-1为后退一页。</li>
+</ul>
+<p>在HTML5中，window.history对象得到了扩展，新增的API包括：</p>
+<ul>
+<li>history.pushState(data[,title][,url]);//向历史记录中追加一条记录</li>
+<li>history.replaceState(data[,title][,url]);//替换当前页在历史记录中的信息。</li>
+<li>history.state;//是一个属性，可以得到当前页的state信息。</li>
+<li>•
+window.onpopstate;//是一个事件，在点击浏览器后退按钮或js调用forward()、back()、go()时触发。监听函数中可传入一个event对象，event.state即为通过pushState()或replaceState()方法传入的data参数</li>
+</ul>
+<h2 id="区别">区别</h2>
+<ul>
+<li>hash模式较丑，history模式较优雅</li>
+<li>pushState设置的新URL可以是与当前URL同源的任意URL；而hash只可修改#后面的部分，故只可设置与当前同文档的URL</li>
+<li>pushState设置的新URL可以与当前URL一模一样，这样也会把记录添加到栈中；而hash设置的新值必须与原来不一样才会触发记录添加到栈中</li>
+<li>pushState通过stateObject可以添加任意类型的数据到记录中；而hash只可添加短字符串</li>
+<li>pushState可额外设置title属性供后续使用</li>
+<li>hash兼容IE8以上，history兼容IE10以上</li>
+<li>history模式需要后端配合将所有访问都指向index.html，否则用户刷新页面，会导致404错误</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/dawn/tags/html/" rel="tag"># html</a>
+              <a href="/dawn/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+              <a href="/dawn/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" rel="tag"># 前端基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/dawn/2021/08/02/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/css/" rel="prev" title="css">
+                  <i class="fa fa-angle-left"></i> css
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/dawn/2021/10/02/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="next" title="html基础知识">
+                  html基础知识 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">DawN</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/dawn/js/comments.js"></script><script src="/dawn/js/utils.js"></script><script src="/dawn/js/motion.js"></script><script src="/dawn/js/schemes/muse.js"></script><script src="/dawn/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/dawn/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

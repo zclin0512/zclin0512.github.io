@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dawn/images/favicon.png">
+  <link rel="mask-icon" href="/dawn/images/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/dawn/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin512.gitee.io","root":"/dawn/","images":"/dawn/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/dawn/js/config.js"></script>
+
+    <meta name="description" content="window对象表示浏览器中打开的窗口，如果文档包含框架（frame或iframe标签），浏览器会自动创建一个额外的window对象 document对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="window对象">
+<meta property="og:url" content="https://zclin512.gitee.io/dawn/2021/07/29/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/window%E5%AF%B9%E8%B1%A1/index.html">
+<meta property="og:site_name" content="破晓时分">
+<meta property="og:description" content="window对象表示浏览器中打开的窗口，如果文档包含框架（frame或iframe标签），浏览器会自动创建一个额外的window对象 document对象">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-29T12:59:36.000Z">
+<meta property="article:modified_time" content="2023-08-07T02:06:05.522Z">
+<meta property="article:author" content="DawN">
+<meta property="article:tag" content="html">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="前端基础">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zclin512.gitee.io/dawn/2021/07/29/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/window%E5%AF%B9%E8%B1%A1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin512.gitee.io/dawn/2021/07/29/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/window%E5%AF%B9%E8%B1%A1/","path":"2021/07/29/前端基础/window对象/","title":"window对象"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>window对象 | 破晓时分</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/dawn/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/dawn/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">破晓时分</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">黎明将至</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/dawn/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/dawn/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/dawn/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#document%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">document对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">对象方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#history%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">history对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7"><span class="nav-number">2.1.</span> <span class="nav-text">对象属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95-1"><span class="nav-number">2.2.</span> <span class="nav-text">对象方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#location%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.</span> <span class="nav-text">location对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7-1"><span class="nav-number">3.1.</span> <span class="nav-text">对象属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95-2"><span class="nav-number">3.2.</span> <span class="nav-text">对象方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#navigator%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.</span> <span class="nav-text">navigator对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7-2"><span class="nav-number">4.1.</span> <span class="nav-text">对象属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95-3"><span class="nav-number">4.2.</span> <span class="nav-text">对象方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#screen%E5%AF%B9%E8%B1%A1"><span class="nav-number">5.</span> <span class="nav-text">screen对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7-3"><span class="nav-number">5.1.</span> <span class="nav-text">对象属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B1%9E%E6%80%A7"><span class="nav-number">6.</span> <span class="nav-text">其他属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">window方法</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DawN</p>
+  <div class="site-description" itemprop="description">记录 归档 输出</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/dawn/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/dawn/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/dawn/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zclin512.gitee.io/dawn/2021/07/29/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/window%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dawn/images/avatar.gif">
+      <meta itemprop="name" content="DawN">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="破晓时分">
+      <meta itemprop="description" content="记录 归档 输出">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="window对象 | 破晓时分">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          window对象
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-29 20:59:36" itemprop="dateCreated datePublished" datetime="2021-07-29T20:59:36+08:00">2021-07-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-07 10:06:05" itemprop="dateModified" datetime="2023-08-07T10:06:05+08:00">2023-08-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/dawn/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>window对象表示浏览器中打开的窗口，如果文档包含框架（frame或iframe标签），浏览器会自动创建一个额外的window对象</p>
+<h2 id="document对象">document对象</h2>
+<p><span id="more"></span> ### 对象属性</p>
+<ul>
+<li><p>body：提供对</p>
+<body>
+<p>元素的直接访问。对于定义了框架集的文档，该属性引用最外层的
+&lt;frameset&gt;。</p></li>
+<li><p>cookie：设置或返回与当前文档有关的所有 cookie。</p></li>
+<li><p>domain：返回当前文档的域名。</p></li>
+<li><p>lastModified：返回文档被最后修改的日期和时间。</p></li>
+<li><p>referrer：返回载入当前文档的文档的 URL。</p></li>
+<li><p>title：返回当前文档的标题。</p></li>
+<li><p>URL：返回当前文档的 URL。</p></li>
+</ul>
+<h3 id="对象方法">对象方法</h3>
+<ul>
+<li>close():关闭用 document.open()
+方法打开的输出流，并显示选定的数据。</li>
+<li>getElementById():返回对拥有指定 id 的第一个对象的引用。</li>
+<li>getElementsByName():返回带有指定名称的对象集合。</li>
+<li>getElementsByTagName():返回带有指定标签名的对象集合。</li>
+<li>open():打开一个流，以收集来自任何 document.write() 或
+document.writeln() 方法的输出。</li>
+<li>write():向文档写 HTML 表达式 或 JavaScript 代码。</li>
+<li>writeln():等同于 write()
+方法，不同的是在每个表达式之后写一个换行符。</li>
+</ul>
+<h2 id="history对象">history对象</h2>
+<p>History 对象包含用户（在浏览器窗口中）访问过的 URL。</p>
+<p>History 对象是 window 对象的一部分，可通过 window.history
+属性对其进行访问。</p>
+<h3 id="对象属性">对象属性</h3>
+<ul>
+<li>length：返回浏览器历史列表中的 URL 数量。</li>
+</ul>
+<h3 id="对象方法-1">对象方法</h3>
+<ul>
+<li>back():加载 history 列表中的前一个 URL。</li>
+<li>forward():加载 history 列表中的下一个 URL。</li>
+<li>go():加载 history 列表中的某个具体页面。</li>
+</ul>
+<h2 id="location对象">location对象</h2>
+<p>Location 对象包含有关当前 URL 的信息。</p>
+<p>Location 对象是 Window 对象的一个部分，可通过 window.location
+属性来访问。</p>
+<h3 id="对象属性-1">对象属性</h3>
+<ul>
+<li>hash:设置或返回从井号 (#) 开始的 URL（锚）。</li>
+<li>host:设置或返回主机名和当前 URL 的端口号。</li>
+<li>hostname:设置或返回当前 URL 的主机名。</li>
+<li>href:设置或返回完整的 URL。</li>
+<li>pathname:设置或返回当前 URL 的路径部分。</li>
+<li>port:设置或返回当前 URL 的端口号。</li>
+<li>protocol:设置或返回当前 URL 的协议。</li>
+<li>search:设置或返回从问号 (?) 开始的 URL（查询部分）。</li>
+</ul>
+<h3 id="对象方法-2">对象方法</h3>
+<ul>
+<li>assign():加载新的文档。</li>
+<li>reload():重新加载当前文档。</li>
+<li>replace():用新的文档替换当前文档。</li>
+</ul>
+<h2 id="navigator对象">navigator对象</h2>
+<p>Navigator 对象包含有关浏览器的信息。</p>
+<h3 id="对象属性-2">对象属性</h3>
+<ul>
+<li>appCodeName:返回浏览器的代码名。</li>
+<li>appMinorVersion:返回浏览器的次级版本。</li>
+<li>appName:返回浏览器的名称。</li>
+<li>appVersion:返回浏览器的平台和版本信息。</li>
+<li>browserLanguage:返回当前浏览器的语言。</li>
+<li>cookieEnabled:返回指明浏览器中是否启用 cookie 的布尔值。</li>
+<li>cpuClass:返回浏览器系统的 CPU 等级。</li>
+<li>onLine:返回指明系统是否处于脱机模式的布尔值。</li>
+<li>platform:返回运行浏览器的操作系统平台。</li>
+<li>systemLanguage:返回 OS 使用的默认语言。</li>
+<li>userAgent:返回由客户机发送服务器的 user-agent 头部的值。</li>
+<li>userLanguage:返回 OS 的自然语言设置。</li>
+</ul>
+<h3 id="对象方法-3">对象方法</h3>
+<ul>
+<li>javaEnabled():规定浏览器是否启用 Java。</li>
+<li>taintEnabled():规定浏览器是否启用数据污点 (data tainting)。</li>
+</ul>
+<h2 id="screen对象">screen对象</h2>
+<p>Screen 对象包含有关客户端显示屏幕的信息。</p>
+<h3 id="对象属性-3">对象属性</h3>
+<ul>
+<li>availHeight:返回显示屏幕的高度 (除 Windows 任务栏之外)。</li>
+<li>availWidth:返回显示屏幕的宽度 (除 Windows 任务栏之外)。</li>
+<li>bufferDepth:设置或返回调色板的比特深度。</li>
+<li>colorDepth:返回目标设备或缓冲器上的调色板的比特深度。</li>
+<li>deviceXDPI:返回显示屏幕的每英寸水平点数。</li>
+<li>deviceYDPI:返回显示屏幕的每英寸垂直点数。</li>
+<li>fontSmoothingEnabled:返回用户是否在显示控制面板中启用了字体平滑。</li>
+<li>height:返回显示屏幕的高度。</li>
+<li>logicalXDPI:返回显示屏幕每英寸的水平方向的常规点数。</li>
+<li>logicalYDPI:返回显示屏幕每英寸的垂直方向的常规点数。</li>
+<li>pixelDepth:返回显示屏幕的颜色分辨率（比特每像素）。</li>
+<li>updateInterval:设置或返回屏幕的刷新率。</li>
+<li>width:返回显示器屏幕的宽度。</li>
+</ul>
+<h2 id="其他属性">其他属性</h2>
+<ul>
+<li>closed:返回窗口是否已被关闭。</li>
+<li>defaultStatus:设置或返回窗口状态栏中的默认文本。</li>
+<li>innerheight:返回窗口的文档显示区的高度。</li>
+<li>innerwidth:返回窗口的文档显示区的宽度。</li>
+<li>length:设置或返回窗口中的框架数量。</li>
+<li>name:设置或返回窗口的名称。</li>
+<li>opener:返回对创建此窗口的窗口的引用。</li>
+<li>outerheight:返回窗口的外部高度。</li>
+<li>outerwidth:返回窗口的外部宽度。</li>
+<li>pageXOffset:设置或返回当前页面相对于窗口显示区左上角的 X 位置。</li>
+<li>pageYOffset:设置或返回当前页面相对于窗口显示区左上角的 Y 位置。</li>
+<li>parent:返回父窗口。</li>
+<li>self:返回对当前窗口的引用。等价于 Window 属性。</li>
+<li>status:设置窗口状态栏的文本。</li>
+<li>top:返回最顶层的先辈窗口。</li>
+<li>window:window 属性等价于 self 属性，它包含了对窗口自身的引用。</li>
+<li>screenLeft，screenTop，screenX，screenY
+只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和
+Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持 screenX 和
+screenY。</li>
+</ul>
+<h2 id="window方法">window方法</h2>
+<ul>
+<li>alert():显示带有一段消息和一个确认按钮的警告框。</li>
+<li>blur():把键盘焦点从顶层窗口移开。</li>
+<li>clearInterval():取消由 setInterval() 设置的 timeout。</li>
+<li>clearTimeout():取消由 setTimeout() 方法设置的 timeout。</li>
+<li>close():关闭浏览器窗口。</li>
+<li>confirm():显示带有一段消息以及确认按钮和取消按钮的对话框。</li>
+<li>createPopup():创建一个 pop-up 窗口。</li>
+<li>focus():把键盘焦点给予一个窗口。</li>
+<li>moveBy():可相对窗口的当前坐标把它移动指定的像素。</li>
+<li>moveTo():把窗口的左上角移动到一个指定的坐标。</li>
+<li>open():打开一个新的浏览器窗口或查找一个已命名的窗口。</li>
+<li>print():打印当前窗口的内容。</li>
+<li>prompt():显示可提示用户输入的对话框。</li>
+<li>resizeBy():按照指定的像素调整窗口的大小。</li>
+<li>resizeTo():把窗口的大小调整到指定的宽度和高度。</li>
+<li>scrollBy():按照指定的像素值来滚动内容。</li>
+<li>scrollTo():把内容滚动到指定的坐标。</li>
+<li>setInterval():按照指定的周期（以毫秒计）来调用函数或计算表达式。</li>
+<li>setTimeout():在指定的毫秒数后调用函数或计算表达式。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/dawn/tags/html/" rel="tag"># html</a>
+              <a href="/dawn/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+              <a href="/dawn/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" rel="tag"># 前端基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/dawn/2021/07/29/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E7%81%B0%E5%BA%A6%E5%8C%96/" rel="prev" title="灰度化">
+                  <i class="fa fa-angle-left"></i> 灰度化
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/dawn/2021/07/29/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%951/" rel="next" title="【软件测试】基本概念">
+                  【软件测试】基本概念 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">DawN</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/dawn/js/comments.js"></script><script src="/dawn/js/utils.js"></script><script src="/dawn/js/motion.js"></script><script src="/dawn/js/schemes/muse.js"></script><script src="/dawn/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/dawn/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

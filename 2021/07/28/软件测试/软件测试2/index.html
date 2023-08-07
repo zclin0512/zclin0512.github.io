@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dawn/images/favicon.png">
+  <link rel="mask-icon" href="/dawn/images/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/dawn/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin512.gitee.io","root":"/dawn/","images":"/dawn/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/dawn/js/config.js"></script>
+
+    <meta name="description" content="一、黑盒测试 1.定义 不关心被测对象的内部实现，针对被测对象提供的外部各功能与规格来设计测试用例进行的测试 2.分类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【软件测试】黑盒测试、白盒测试、静态测试">
+<meta property="og:url" content="https://zclin512.gitee.io/dawn/2021/07/28/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%952/index.html">
+<meta property="og:site_name" content="破晓时分">
+<meta property="og:description" content="一、黑盒测试 1.定义 不关心被测对象的内部实现，针对被测对象提供的外部各功能与规格来设计测试用例进行的测试 2.分类">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-28T13:39:15.000Z">
+<meta property="article:modified_time" content="2023-08-07T02:06:29.353Z">
+<meta property="article:author" content="DawN">
+<meta property="article:tag" content="软件测试">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zclin512.gitee.io/dawn/2021/07/28/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%952/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin512.gitee.io/dawn/2021/07/28/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%952/","path":"2021/07/28/软件测试/软件测试2/","title":"【软件测试】黑盒测试、白盒测试、静态测试"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【软件测试】黑盒测试、白盒测试、静态测试 | 破晓时分</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/dawn/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/dawn/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">破晓时分</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">黎明将至</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/dawn/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/dawn/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/dawn/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95"><span class="nav-number">1.</span> <span class="nav-text">一、黑盒测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">1.定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">2.分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">1）功能测试方法（设计测试用例）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">2）性能测试方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AF%E7%94%A8%E6%80%A7%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.3.</span> <span class="nav-text">3）可用性测试方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">4.黑盒测试方法的实际使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95%E7%BB%8F%E9%AA%8C"><span class="nav-number">1.4.</span> <span class="nav-text">5.黑盒测试经验</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">二、白盒测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-number">2.1.</span> <span class="nav-text">1.定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="nav-number">2.2.</span> <span class="nav-text">2.程序结构分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%A6%86%E7%9B%96"><span class="nav-number">2.3.</span> <span class="nav-text">3.逻辑覆盖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E6%8F%92%E8%A3%85"><span class="nav-number">2.4.</span> <span class="nav-text">4.程序插装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95"><span class="nav-number">2.5.</span> <span class="nav-text">5.其他白盒测试方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E9%9D%99%E6%80%81%E6%B5%8B%E8%AF%95"><span class="nav-number">3.</span> <span class="nav-text">三、静态测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="nav-number">3.1.</span> <span class="nav-text">1、定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90"><span class="nav-number">3.2.</span> <span class="nav-text">2、静态分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%A1%E6%9F%A5"><span class="nav-number">3.3.</span> <span class="nav-text">3、软件审查</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DawN</p>
+  <div class="site-description" itemprop="description">记录 归档 输出</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/dawn/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/dawn/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/dawn/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zclin512.gitee.io/dawn/2021/07/28/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%952/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dawn/images/avatar.gif">
+      <meta itemprop="name" content="DawN">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="破晓时分">
+      <meta itemprop="description" content="记录 归档 输出">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【软件测试】黑盒测试、白盒测试、静态测试 | 破晓时分">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【软件测试】黑盒测试、白盒测试、静态测试
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-28 21:39:15" itemprop="dateCreated datePublished" datetime="2021-07-28T21:39:15+08:00">2021-07-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-07 10:06:29" itemprop="dateModified" datetime="2023-08-07T10:06:29+08:00">2023-08-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/dawn/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">软件测试</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="一黑盒测试">一、黑盒测试</h3>
+<h4 id="定义">1.定义</h4>
+<p>不关心被测对象的内部实现，针对被测对象提供的外部各功能与规格来设计测试用例进行的测试</p>
+<h4 id="分类">2.分类</h4>
+<span id="more"></span>
+<ul>
+<li>功能测试
+<ul>
+<li>功能测试</li>
+<li>兼容性测试</li>
+<li>一致性测试</li>
+<li>配置测试</li>
+<li>安全性测试</li>
+</ul></li>
+<li>性能测试</li>
+<li>可用性测试</li>
+<li>可靠性测试
+<ul>
+<li>故障输入测试</li>
+<li>长时间测试</li>
+<li>压力测试</li>
+<li>备份测试</li>
+</ul></li>
+<li>可服务性测试
+<ul>
+<li>安全测试</li>
+<li>易用性测试</li>
+<li>可维护性测试</li>
+</ul></li>
+<li>组网解决方案测试 #### 3.常见黑盒测试方法</li>
+</ul>
+<h5 id="功能测试方法设计测试用例">1）功能测试方法（设计测试用例）</h5>
+<p>定义：根据产品特性、操作描述和用户方案，测试一个产品的特性和可操作行为以确保他们满足设计需求。</p>
+<p><strong>a.等价类划分</strong></p>
+<p>定义：将全部输入数据合理划分为若干等价类，在每一个等价类中选取一个数据作为测试输入条件，这样所取得的测试效果与选择等价类内所有数据作为测试的输入所取得的效果是一样的。</p>
+<p>特点：典型，常用，有效提高测试效率</p>
+<p>步骤：</p>
+<ol type="1">
+<li>划分等价类</li>
+<li>边界值分析（可选）</li>
+<li>多个输入间关系分析（可选）</li>
+<li>生成测试用例</li>
+</ol>
+<p><strong>b.边界值分析</strong></p>
+<p>定义：经验告诉我们，大量的错误是发生在输入或输出范围的边界上，边界值分析就是在划分的等价类区域的边界及附近进行测试数据的选取。</p>
+<p>特点：典型，常用测试方法，经常和等价类法配合使用</p>
+<p>步骤：</p>
+<ol type="1">
+<li>确定输入的范围</li>
+<li>确定范围的边界值</li>
+<li>多个输入关系分析（可选）</li>
+<li>生成测试用例</li>
+</ol>
+<p>边界的定义：</p>
+<p>上点：域边界上的点</p>
+<p>离点：离上点最近的点</p>
+<p>内点：域内的任一点</p>
+<p><strong>c.错误推测</strong></p>
+<p>定义：错误推测法是基于经验和直觉推测程序中所有可能存在的各种错误，从而有针对性的进行测试的方法。</p>
+<p>特点：分析过程简单，可操作性强，测试用例的设计更加具有针对性、有效性</p>
+<p>大致步骤：</p>
+<ol type="1">
+<li>确定被测对象范围</li>
+<li>在测试经验库中查找相关内容</li>
+<li>根据测试经验库中查找出的相关内容设计测试用例</li>
+</ol>
+<p><strong>d.因果图分析方法</strong></p>
+<p>定义：等价类和边界值法这种考虑了对于一个输入条件的分析，但是没有考虑多个输入条件之间的组合与联系。因果图方法使用图的方法对多个输入间的组合以及输入、输出之间的因果关系进行了分析。</p>
+<p>特点：通过分析输入输出之间的因果组合，高效的从众多组合中选出有效用例</p>
+<p>步骤：</p>
+<ol type="1">
+<li>确定被测对象的输入与输出</li>
+<li>分析输入与输出之间的因果关系</li>
+<li>根据因果关系分析画出因果图</li>
+<li>将因果图转换为判定表</li>
+<li>根据判定表设计测试用例</li>
+</ol>
+<p>优点：综合考虑了输入、输出条件的组合，使测试设计更加全面</p>
+<p>缺点：方法过程比较复杂，方法本身比较难以掌握，输入与输出之间的因果关系比较难以从规格描述中得到，需要一个分析过程；如果被测对象本身比较复杂，那么分析过程以及最后得到的因果关系可能会非常复杂，得到的测试用例数量很庞大，需要耗费比较多的工作量。</p>
+<p>基于以上原因，这种方法实际得到的应用不多</p>
+<p><strong>e.判定表方法</strong></p>
+<p>定义：采用表格的形式，列出所有条件和所有结果的组合，做到无遗漏的覆盖。</p>
+<p>特点：判定表适合条件项各自独立，互不影响的情况，判定表使用的技巧在于，把条件项划分清晰，对条件进行合理的组合，使得到的规则数量小。</p>
+<p>步骤：</p>
+<ol type="1">
+<li>确定规则个数，加入有N个条件，每个条件有两个取值，就有2的N次方个规则。</li>
+<li>列出所有的条件桩和动作桩</li>
+<li>填入条件项</li>
+<li>填入动作项得到初始判定表</li>
+<li>简化，合并相似规则和动作</li>
+</ol>
+<p><strong>f.正交试验设计方法</strong></p>
+<p>定义：正交试验设计发是从大量的试验点中，选取适量的有代表性的点，使用统计学中推导出的正交表，合理的安排试验的一种科学的实验设计方法，利用这种方法，可使所有的因子和因子的状态在试验中均匀的分配与搭配，均匀地有规律的变化。</p>
+<p>特点：采用正交实验设计方法进行拟合测试用例的设计，能够有效地合理的减少测试的工时与费用，兼顾测试成本与测试充分性的均衡，提高测试效率。</p>
+<p>正交实验设计方法步骤，</p>
+<ol type="1">
+<li>提取功能说明，构造因子--状态表影响试验指标的条件成为因子，而影响实验因子的条件叫因子的状态。</li>
+<li>加权筛选，生成因素分析表，对因子与状态的选择可按其重要程度分别加权。可根据各个因子及状态的作用大小、出现频率的大小以及测试的重要，确定权值大小</li>
+<li>利用正交表构造测试数据集，正交表的推导依据Galois理论</li>
+</ol>
+<p><strong>g.功能图方法</strong></p>
+<p>定义：功能图方法就是根据被测功能的状态迁移图以及逻辑功能图的覆盖进行测试用例设计的方法</p>
+<p>特点：功能图方法借鉴了白盒测试方法的思想，功能图方法是一种常用的且实用的黑盒测试方法。</p>
+<p>功能图方法步骤：</p>
+<ol type="1">
+<li>画出状态迁移图</li>
+<li>在每个状态中生成局部测试用例</li>
+<li>利用规则生成测试路径</li>
+<li>测试用例合成</li>
+</ol>
+<h5 id="性能测试方法">2）性能测试方法</h5>
+<p>测试指标：吞吐量，丢包率，延迟，背对背缓冲</p>
+<p><strong>性能指标测试方法</strong></p>
+<p>指标标测试的基本方法是给系统逐步增加压力，在压力达到一定程度并确认外围设备不构成性能瓶颈的情况下，满足下列条件之一者，可以认为达到了系统最大处理能力。</p>
+<ul>
+<li>被被测模块所在机器的CPU空闲低于30%。</li>
+<li>增加呼叫压力，呼叫成功率下降，如成功率由100%降低至99.9%以下。</li>
+<li>增加呼叫压力。呼叫平均响应时间超出了可接受的范围。</li>
+</ul>
+<p>由于被测系统有一定的预热时间。因此基本性能指标测试的指标数据应该在测试稳定一段时间后获得比较准确，一般情况下，对于一个性能指标测试用例至少在执行30分钟后再去获取性能指标数据为宜。</p>
+<p><strong>稳定性的测试方法</strong></p>
+<p>系统稳定性测试的目的，是测试系统在一定的压力条件下，短期和长期运行的稳定性，压力条件可以考虑一般压力。满负荷压力，压力逐渐增递增，压力逐渐递减等情况。</p>
+<p>由于稳定性测试需要根据系统运行的健康状况来得出结论。因此需要实时观察系统各进程内存使用、CPU占用、文件句柄使用、磁盘I/O使用，磁盘剩余空间，数据库剩余空间等资源以及是否有进程异常退出，进程死锁等异常，测试工具软件应能连续记录这些信息，便于测试结果进行稳定性分析。</p>
+<p>同时稳定性测试中还必须关注测试响应的成功率，成功率至少在99.9%以上的稳定性测试才是有意义的。</p>
+<p>系统稳定性测试时间应该较长，一般一个用例的执行时间应在24小时以上。</p>
+<p><strong>递增性能测试方法</strong></p>
+<p>递增性能测试的原理。是通过改变性能测试压力条件（如递增访问用户数），记录系统响应时间变化。错误率变化，TPS变化曲线。并和例行系统模型的变化曲线进行对比分析，从而评估被测系统性能或者发现被测系统性能缺陷的测试方法。</p>
+<h5 id="可用性测试方法">3）可用性测试方法</h5>
+<p>可用性测试，近来也将其称为体验测试，其目的是通过用户对产品原型或交付件的使用，来找出产品的可用性问题。其测试目标集中在：</p>
+<ol type="1">
+<li>系统完成功能的正确性。</li>
+<li>系统的易学性。</li>
+<li>受用系统的效率。</li>
+<li>系统处理的一致性。</li>
+<li>系统的容错性。</li>
+<li>客户使用系统的满意度。</li>
+</ol>
+<p>可用性测试基本步骤：</p>
+<ol type="1">
+<li>用户分析（还用户特征、背景、行为等的分析）</li>
+<li>场景任务分析设计。</li>
+<li>测试环境布置与测试引导。</li>
+<li>用户绩效数据搜集。</li>
+<li>访谈与问卷调查。</li>
+<li>结果分析，得出可用性基线，及需改进问题。</li>
+</ol>
+<h4 id="黑盒测试方法的实际使用">4.黑盒测试方法的实际使用</h4>
+<p>等价类，边界值，错误推测这几种方法是最常用的。</p>
+<p>黑盒测试方法主要应用在集成测试，系统测试阶段，也可用在单元测试阶段。</p>
+<p>不同的黑盒测试方法具有不同的优点，注意根据实际情况选择不同的黑盒测试方法进行测试。</p>
+<p>黑盒测试方法在实际应用往往不是孤立的，大部分情况下这些方法要结合起来使用。</p>
+<h4 id="黑盒测试经验">5.黑盒测试经验</h4>
+<ul>
+<li><p>充分熟悉被测对象</p>
+<ul>
+<li>了解特性的由来</li>
+<li>了解特性的应用场景</li>
+<li>了解特性的相互关联</li>
+<li>了解实际的组网方式</li>
+<li>了解接口的信息交互</li>
+<li>了解接口的协议内容</li>
+<li>了解内部的状态变迁</li>
+</ul></li>
+<li><p>对测试进行详细分类，有助于避免遗漏。</p>
+<p>功能性测试，一致性测试，性能测试，安全性测试，压力测试，配置测试，安装测试，易用性测试，备份测试，兼容性测试，互操作测试，QoS测试，长时间测试。</p></li>
+<li><p>测试点确认</p>
+<ul>
+<li>测试点是在对测试对象分析的基础上得出测试重点，可以将其看成测试用例的标题。</li>
+<li>测试点能够清晰的反应，测试用例，设计者的思路，便于进行评审。</li>
+<li>测试点能够清晰的反应，对版本特性的覆盖，便于发现遗漏。</li>
+</ul></li>
+</ul>
+<h3 id="二白盒测试">二、白盒测试</h3>
+<h4 id="定义-1">1.定义</h4>
+<p>根据被测程序的内部结构设计测试用例的一种测试方法，多应用于单元测试。</p>
+<h4 id="程序结构分析">2.程序结构分析</h4>
+<p>程序的结构形式是白盒测试的主要依据，对程序结构的分析包括如下：</p>
+<ol type="1">
+<li>控制流分析</li>
+</ol>
+<p>​
+通过控制流图矩阵来表示程序的控制流程图，分析程序的控制流是为了使编写出的程序有好的结构。对于程序结构提出以下四点基本要求，这些要求是写出的程序不应包含：</p>
+<ul>
+<li>转向并不存在的标号</li>
+<li>没有用的语句标号</li>
+<li>从程序入口进入后无法达到的语句</li>
+<li>不能达到停机语句的语句</li>
+</ul>
+<p>目前主要是通过编译器和程序分析工具来实现程序控制流分析。</p>
+<ol start="2" type="1">
+<li>数据流分析</li>
+</ol>
+<p>数据流分析是分析程序中未定义变量的使用和未曾使用的变量定义</p>
+<p>目前通过编译器或程序分析工具，通过数据流分析</p>
+<p>利用数据流分析的结果可以进行代码编译优化</p>
+<ol start="3" type="1">
+<li>信息流分析</li>
+</ol>
+<p>目前信息流分析主要用在验证程序变量间信息的传输遵循保密要求。</p>
+<p>分析主要分析输出值跟输入值之间的影响关系，也就是说，看哪个输入值会直接或间接的影响到输出结果。</p>
+<p>程序的信息流关系，为软件开发和确认提供了十分有益的工具。</p>
+<h4 id="逻辑覆盖">3.逻辑覆盖</h4>
+<p>结构测试是依据测试程序的逻辑结构设计测试用例，驱动被测程序运行完成的测试。结构测试中的一个重要问题是，测试进行到什么地步就达到要求，可以结束测试了。这就是说需要给出结构测试的覆盖准则。</p>
+<ul>
+<li>语句覆盖：设计若干测试用例，运行被测程序，使得每一个可执行语句至少执行一次。这时所谓的“若干个”，自然是越少越好。<strong>缺陷</strong>：不能判别没有else
+分支的if语句的条件为假时的错误，不能判别带有break跳转的while条件的退出条件是否正确，不能判别Do-while循环的条件错误</li>
+<li>判定覆盖：也叫分支覆盖。设计若干个测试用例，运行被测程序，使得程序中。每个判断的取真分支和取假分支至少执行一次。即判断的真假值均被满足。<strong>缺陷</strong>：判定覆盖不能对判断条件进行检查。</li>
+<li>条件覆盖：设计足够多的测试用例，运行被测程序，使得程序中每个判断的每个条件的可能取值至少执行一次。</li>
+<li>判定-条件覆盖：设计足够多的测试用例，运行被测程序，使得程序中每个判断的每个条件的可能取值至少执行一次，并且每个可能的判断结果也至少执行一次。</li>
+<li>多重条件覆盖：也叫条件组合覆盖。设计足够多的测试用例，运行被测程序，使程序中每个判断的所有可能的条件取值组合至少执行一次。</li>
+<li>路径覆盖：设计足够多的测试用例，运行被测程序。要覆盖程序中所有可能的路径。</li>
+</ul>
+<h4 id="程序插装">4.程序插装</h4>
+<p>借助被测程序中插入操作来实现测试目的的方法。在程序的特定部位插入记录动态特性的语句。最终是为了把程序执行过程中发生的一些重要历史事件记录下来。（相当于打断点）</p>
+<p><strong>语句断言</strong></p>
+<p>在程序中的特定部位插入某些用以判断变量特性的语句，使得程序执行中这些语句得以证实，从而使程序的运行特性得到证实，我们把插入这些语句称为断言，这一做法是程序正确性证明的初等步骤。尽管算不上严格的证明，但方法本身仍然是很实用的。</p>
+<h4 id="其他白盒测试方法">5.其他白盒测试方法</h4>
+<ol type="1">
+<li><p><strong>预测试</strong></p>
+<p>一种基于程序结构的测试方法。域测试的“域”指的是程序的输入空间，测试的理想结果就是检验输入空间的。每一个输入元素是否都产生正确的结果，分析输入域的基础上，选择适当的测试点以后进行测试的。</p>
+<p>致命缺点：</p>
+<ul>
+<li>为进行“域”测试对过程提出的限制过多</li>
+<li>当程序存在很多路径时，所需的测试点也就很多</li>
+</ul></li>
+<li><p><strong>符号测试</strong></p>
+<p>日本思想是允许程序的输入，不仅仅是具体的数值数据，而且包括符号值。符号值可以是基本的符号变量值，也可以是这些符号变量值的一个表达式。可以看作是程序测试和程序验证的一个折中方法。一方面，他沿用了传统的程序测试方法，通过运行被测程序来验证它的可靠性。另一方面，由于一字符号测试的结果代表了一大类普通测试的运行结果，实际上是证明了程序接受此类输入，所得出是正确的还是错误的。</p>
+<p>存在问题。：</p>
+<ul>
+<li>分支问题。</li>
+<li>二义性问题。</li>
+<li>大程序问题。</li>
+</ul></li>
+<li><p><strong>程序变异。</strong></p>
+<p>舍掉一些次要因素，对循环机制进行简化，极大地减少路径的数量，实现简化循环意义下的路径覆盖。无论循环的形式和实际执行循环体的次数多少，只考虑循环一次和零次的情况。</p></li>
+</ol>
+<h3 id="三静态测试">三、静态测试</h3>
+<h4 id="定义-2">1、定义</h4>
+<p>静态测试不要求实际执行被测代码，而是以静态分析或者人工检查被测系统的方法对系统进行测试。由于静态测试不需要编写测试代码进行执行，所以它更适合于在开发早期进行，该工作更适合在编码早期进行，通过发现典型问题反馈给开发，从而在编码早期采取规范编程等方式规避问题。</p>
+<h4 id="静态分析">2、静态分析</h4>
+<p>静态分析主要是对源程序进行静态分析，从而发现被测代码的缺陷以及潜在的“危险”结构。静态分析的很多分析方法往往都可以借助工具进行，目前Logiscope
+Audit，PC-Lint，Telelogic Tau等工具都可以作为静态分析的工具。</p>
+<p>方法：</p>
+<ul>
+<li>构思分析素材：根据以往经验、当前项目要求确定该分析什么。</li>
+<li>生成分析素材：根据源代码生成能够辅助发现开发代码问题的各种引用表等分析素材信息。</li>
+<li>静态错误分析：利用已经生成的各种引用表，源代码等分析素材。寻找代码中的缺陷以及潜在的“危险”结构。</li>
+</ul>
+<p><strong>分析素材</strong></p>
+<p>分析素材是静态分析的核心，一般根据代码中常见的问题，我们会确定一些分析素材，根据这些分析素材就可以比较快速简单的发现此类常见问题。对于一个组织来说应该是逐渐积累的，随着这方面工作进行的增多，就会积累下来很多有效的分析素材。而且有些分析素材本身还可以直接转换成编码规范来影响开发团队的日常开发，从而减少用于静态分析的工作量。</p>
+<p><strong>常用方法</strong></p>
+<ul>
+<li>变量交叉引用表：在表中标明各变量的属性，引用次数（读引用次数、写引用次数）、是否初始化、类型等。</li>
+<li>函数引用表：在该表中，标明各个函数的属性：是否定义、引用次数、扇入数、扇出数；参数表：输入参数的个数、顺序、类型；输出参数的个数、顺序、类型。</li>
+<li>代码度量表：在该表中列出各个文件、各个函数的代码量等，可以用于判断哪些函数、模块的代码复杂度比较高，就集中分析哪里。</li>
+<li>pc-lint分析结果：根据我们自己的分析目的，往往可以确定一些分析选项，最后可以分析出相应的信息用于发现问题。</li>
+</ul>
+<p><strong>构思分析素材</strong></p>
+<p>在静态分析之前，需要确定想要发现哪些类型的问题，针对不同类型的问题。设计不同的分析素材，尽量提供足以发现问题所需的分析素材。</p>
+<p><strong>生成分析素材</strong></p>
+<p>生成分析素材一般就是运行相应的工具，输出分析结果，这些结果就是下一步进行错误分析的分析素材。</p>
+<p><strong>静态错误分析</strong></p>
+<p>对于一些分析素材，可以直接发现问题，但是还有很多情况需要在分析素材基础上再分析才能发现问题。</p>
+<p>镜静态错误分析方法：</p>
+<ul>
+<li>类型和单位分析：为了发现源程序中数据类型、单位上的不一致性，建立程序语言的预处理程序。</li>
+<li>引用分析：沿着程序的控制路径，核查程序变量的引用异常问题。</li>
+<li>表达式分析：对表达式进行分析，以发现和纠正表达式中出现的错误。</li>
+<li>接口分析：接口的一致性错误</li>
+</ul>
+<h4 id="软件审查">3、软件审查</h4>
+<p>软件审查是一种针对需求文档、开发过程文档、代码、测试文档等的集体评审技术，靠集体的智慧发现上述问题</p>
+<p><strong>方法简介</strong></p>
+<p>软件审查是多个测试人员或者开发人员组成的一个评审小组，通过阅读、讨论和争议，对需求文档、开发过程文档、代码、测试文档等进行分析并发现问题的过程。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/dawn/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" rel="tag"># 软件测试</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/dawn/2021/07/28/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A2%E6%80%81%E5%AD%A6%E8%BD%AC%E6%8D%A2/" rel="prev" title="形态学转换">
+                  <i class="fa fa-angle-left"></i> 形态学转换
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/dawn/2021/07/29/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E7%81%B0%E5%BA%A6%E5%8C%96/" rel="next" title="灰度化">
+                  灰度化 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">DawN</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/dawn/js/comments.js"></script><script src="/dawn/js/utils.js"></script><script src="/dawn/js/motion.js"></script><script src="/dawn/js/schemes/muse.js"></script><script src="/dawn/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/dawn/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
