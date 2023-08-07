@@ -5,24 +5,24 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/dawn/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/dawn/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/dawn/images/favicon.png">
-  <link rel="mask-icon" href="/dawn/images/favicon.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.svg" color="#222">
 
-<link rel="stylesheet" href="/dawn/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin512.gitee.io","root":"/dawn/","images":"/dawn/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/dawn/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin0512.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="provide&#x2F; inject 父组件向子组件，孙子组件，曾孙组件等后代组件传值时可以使用依赖注入。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="依赖注入">
-<meta property="og:url" content="https://zclin512.gitee.io/dawn/2022/01/27/vue/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:url" content="https://zclin0512.github.io/2022/01/27/vue/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="破晓时分">
 <meta property="og:description" content="provide&#x2F; inject 父组件向子组件，孙子组件，曾孙组件等后代组件传值时可以使用依赖注入。">
 <meta property="og:locale" content="zh_CN">
@@ -34,11 +34,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://zclin512.gitee.io/dawn/2022/01/27/vue/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">
+<link rel="canonical" href="https://zclin0512.github.io/2022/01/27/vue/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin512.gitee.io/dawn/2022/01/27/vue/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/","path":"2022/01/27/vue/依赖注入/","title":"依赖注入"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin0512.github.io/2022/01/27/vue/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/","path":"2022/01/27/vue/依赖注入/","title":"依赖注入"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>依赖注入 | 破晓时分</title>
@@ -52,7 +52,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/dawn/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
@@ -72,7 +72,7 @@
 
   <div class="site-meta">
 
-    <a href="/dawn/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">破晓时分</p>
       <i class="logo-line"></i>
@@ -89,7 +89,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/dawn/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/dawn/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/dawn/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
   </ul>
 </nav>
 
@@ -126,18 +126,18 @@
 <div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/dawn/archives/">
+        <a href="/archives/">
           <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/dawn/categories/">
+          <a href="/categories/">
         <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/dawn/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -165,10 +165,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zclin512.gitee.io/dawn/2022/01/27/vue/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">
+    <link itemprop="mainEntityOfPage" href="https://zclin0512.github.io/2022/01/27/vue/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/dawn/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="DawN">
     </span>
 
@@ -209,7 +209,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/dawn/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
         </span>
     </span>
 
@@ -245,20 +245,20 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/dawn/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
-              <a href="/dawn/tags/vue/" rel="tag"># vue</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+              <a href="/tags/vue/" rel="tag"># vue</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/dawn/2022/01/27/vue/%E7%BB%99vue%E7%BB%84%E4%BB%B6%E6%B7%BB%E5%8A%A0%E6%96%B9%E6%B3%95/" rel="prev" title="给vue组件添加方法">
+                <a href="/2022/01/27/vue/%E7%BB%99vue%E7%BB%84%E4%BB%B6%E6%B7%BB%E5%8A%A0%E6%96%B9%E6%B3%95/" rel="prev" title="给vue组件添加方法">
                   <i class="fa fa-angle-left"></i> 给vue组件添加方法
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/dawn/2022/01/28/vue/%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="next" title="插件的使用">
+                <a href="/2022/01/28/vue/%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="next" title="插件的使用">
                   插件的使用 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
@@ -309,7 +309,7 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/dawn/js/comments.js"></script><script src="/dawn/js/utils.js"></script><script src="/dawn/js/motion.js"></script><script src="/dawn/js/schemes/muse.js"></script><script src="/dawn/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
 
@@ -326,7 +326,7 @@
   
 
   <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/dawn/js/third-party/math/mathjax.js"></script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
