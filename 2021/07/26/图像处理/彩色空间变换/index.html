@@ -5,34 +5,34 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
-  <link rel="mask-icon" href="/images/favicon.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dawn/images/favicon.png">
+  <link rel="mask-icon" href="/dawn/images/favicon.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/dawn/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin0512.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin512.gitee.io","root":"/dawn/","images":"/dawn/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/dawn/js/config.js"></script>
 
     <meta name="description" content="彩色空间变换 简介 ​ 一般图像是有红（R）、绿（G）、蓝（B)三个通道，每个通道由（0-255）不同的值组成，这就构成了多彩的图像，这称为图像的颜色空间。在图像处理中，还有另外的颜色空间（如HSV，HIS），这些更具有可分离性和可操作性。所以很多的图像算法需要将图像从RGB转换为其他空间。 RGB与灰度空间互转 ​ RGB（红绿蓝）是依据人眼识别的颜色定义出的空间，可表示大部分颜色。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="彩色空间变换">
-<meta property="og:url" content="https://zclin0512.github.io/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/index.html">
+<meta property="og:url" content="https://zclin512.gitee.io/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/index.html">
 <meta property="og:site_name" content="破晓时分">
 <meta property="og:description" content="彩色空间变换 简介 ​ 一般图像是有红（R）、绿（G）、蓝（B)三个通道，每个通道由（0-255）不同的值组成，这就构成了多彩的图像，这称为图像的颜色空间。在图像处理中，还有另外的颜色空间（如HSV，HIS），这些更具有可分离性和可操作性。所以很多的图像算法需要将图像从RGB转换为其他空间。 RGB与灰度空间互转 ​ RGB（红绿蓝）是依据人眼识别的颜色定义出的空间，可表示大部分颜色。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zclin0512.github.io/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/img.jpg">
-<meta property="og:image" content="https://zclin0512.github.io/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/img_GRAY.jpg">
-<meta property="og:image" content="https://zclin0512.github.io/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/hsv.png">
-<meta property="og:image" content="https://zclin0512.github.io/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/img.jpg">
-<meta property="og:image" content="https://zclin0512.github.io/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/img_HSV.jpg">
-<meta property="og:image" content="https://zclin0512.github.io/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/compare_rgb_bgr.png">
-<meta property="og:image" content="https://zclin0512.github.io/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/img_RGB.jpg">
+<meta property="og:image" content="https://zclin512.gitee.io/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/img.jpg">
+<meta property="og:image" content="https://zclin512.gitee.io/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/img_GRAY.jpg">
+<meta property="og:image" content="https://zclin512.gitee.io/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/hsv.png">
+<meta property="og:image" content="https://zclin512.gitee.io/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/img.jpg">
+<meta property="og:image" content="https://zclin512.gitee.io/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/img_HSV.jpg">
+<meta property="og:image" content="https://zclin512.gitee.io/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/compare_rgb_bgr.png">
+<meta property="og:image" content="https://zclin512.gitee.io/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/img_RGB.jpg">
 <meta property="article:published_time" content="2021-07-26T13:08:54.000Z">
 <meta property="article:modified_time" content="2023-08-07T06:59:11.675Z">
 <meta property="article:author" content="DawN">
@@ -40,14 +40,14 @@
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="图像处理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zclin0512.github.io/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/img.jpg">
+<meta name="twitter:image" content="https://zclin512.gitee.io/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/img.jpg">
 
 
-<link rel="canonical" href="https://zclin0512.github.io/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/">
+<link rel="canonical" href="https://zclin512.gitee.io/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin0512.github.io/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/","path":"2021/07/26/图像处理/彩色空间变换/","title":"彩色空间变换"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin512.gitee.io/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/","path":"2021/07/26/图像处理/彩色空间变换/","title":"彩色空间变换"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>彩色空间变换 | 破晓时分</title>
@@ -61,7 +61,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
+    <link rel="stylesheet" href="/dawn/css/noscript.css">
   </noscript>
 <style>mjx-container[jax="SVG"] {
   direction: ltr;
@@ -193,7 +193,7 @@ mjx-container[display="true"] + br {
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="/dawn/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">破晓时分</p>
       <i class="logo-line"></i>
@@ -210,7 +210,7 @@ mjx-container[display="true"] + br {
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/dawn/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/dawn/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/dawn/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
   </ul>
 </nav>
 
@@ -247,19 +247,19 @@ mjx-container[display="true"] + br {
 <div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">45</span>
+        <a href="/dawn/archives/">
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+          <a href="/dawn/categories/">
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+          <a href="/dawn/tags/">
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -286,10 +286,10 @@ mjx-container[display="true"] + br {
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zclin0512.github.io/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/">
+    <link itemprop="mainEntityOfPage" href="https://zclin512.gitee.io/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%BD%A9%E8%89%B2%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/dawn/images/avatar.gif">
       <meta itemprop="name" content="DawN">
     </span>
 
@@ -330,7 +330,7 @@ mjx-container[display="true"] + br {
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">图像处理</span></a>
+          <a href="/dawn/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">图像处理</span></a>
         </span>
     </span>
 
@@ -414,21 +414,21 @@ opencv中提供了RGB转HSV的方法，只需要将原图像传入，输出的�
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/opencv/" rel="tag"># opencv</a>
-              <a href="/tags/python/" rel="tag"># python</a>
-              <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag"># 图像处理</a>
+              <a href="/dawn/tags/opencv/" rel="tag"># opencv</a>
+              <a href="/dawn/tags/python/" rel="tag"># python</a>
+              <a href="/dawn/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag"># 图像处理</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/" rel="prev" title="几何变换">
+                <a href="/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/" rel="prev" title="几何变换">
                   <i class="fa fa-angle-left"></i> 几何变换
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%9B%BE%E5%83%8F%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/" rel="next" title="图像阈值分割">
+                <a href="/dawn/2021/07/26/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/%E5%9B%BE%E5%83%8F%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/" rel="next" title="图像阈值分割">
                   图像阈值分割 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
@@ -479,7 +479,7 @@ opencv中提供了RGB转HSV的方法，只需要将原图像传入，输出的�
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/dawn/js/comments.js"></script><script src="/dawn/js/utils.js"></script><script src="/dawn/js/motion.js"></script><script src="/dawn/js/schemes/muse.js"></script><script src="/dawn/js/next-boot.js"></script>
 
   
 
@@ -496,7 +496,7 @@ opencv中提供了RGB转HSV的方法，只需要将原图像传入，输出的�
   
 
   <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/js/third-party/math/mathjax.js"></script>
+<script src="/dawn/js/third-party/math/mathjax.js"></script>
 
 
 

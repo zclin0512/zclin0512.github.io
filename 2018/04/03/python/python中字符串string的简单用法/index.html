@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dawn/images/favicon.png">
+  <link rel="mask-icon" href="/dawn/images/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/dawn/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin512.gitee.io","root":"/dawn/","images":"/dawn/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/dawn/js/config.js"></script>
+
+    <meta name="description" content="字符串str:在python中用&quot; &quot; 双引号,或者 &#39; &#39;单引号括起来的内容就是字符串，本文只写了简单的字符串的用法，字符串中的函数操作有很大的作用，再以后的编程中将会经常用到。 字符串拼接 str1+str2,输出中间没有空格 123str1 &#x3D; &quot;Hello World&quot;str2 &#x3D; &quot;Today is full of hope&quot;print(str">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python中字符串string的简单用法">
+<meta property="og:url" content="https://zclin512.gitee.io/dawn/2018/04/03/python/python%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2string%E7%9A%84%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/index.html">
+<meta property="og:site_name" content="破晓时分">
+<meta property="og:description" content="字符串str:在python中用&quot; &quot; 双引号,或者 &#39; &#39;单引号括起来的内容就是字符串，本文只写了简单的字符串的用法，字符串中的函数操作有很大的作用，再以后的编程中将会经常用到。 字符串拼接 str1+str2,输出中间没有空格 123str1 &#x3D; &quot;Hello World&quot;str2 &#x3D; &quot;Today is full of hope&quot;print(str">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-04-03T02:59:36.000Z">
+<meta property="article:modified_time" content="2023-08-25T08:49:02.152Z">
+<meta property="article:author" content="DawN">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zclin512.gitee.io/dawn/2018/04/03/python/python%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2string%E7%9A%84%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin512.gitee.io/dawn/2018/04/03/python/python%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2string%E7%9A%84%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/","path":"2018/04/03/python/python中字符串string的简单用法/","title":"python中字符串string的简单用法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>python中字符串string的简单用法 | 破晓时分</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/dawn/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/dawn/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">破晓时分</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">黎明将至</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/dawn/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/dawn/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/dawn/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DawN</p>
+  <div class="site-description" itemprop="description">记录 归档 输出</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/dawn/archives/">
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/dawn/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/dawn/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zclin512.gitee.io/dawn/2018/04/03/python/python%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2string%E7%9A%84%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dawn/images/avatar.gif">
+      <meta itemprop="name" content="DawN">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="破晓时分">
+      <meta itemprop="description" content="记录 归档 输出">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="python中字符串string的简单用法 | 破晓时分">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python中字符串string的简单用法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-04-03 10:59:36" itemprop="dateCreated datePublished" datetime="2018-04-03T10:59:36+08:00">2018-04-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-25 16:49:02" itemprop="dateModified" datetime="2023-08-25T16:49:02+08:00">2023-08-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/dawn/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>字符串str:在python中用" " 双引号,或者 '
+'单引号括起来的内容就是字符串，本文只写了简单的字符串的用法，字符串中的函数操作有很大的作用，再以后的编程中将会经常用到。</p>
+<p>字符串拼接 str1+str2,输出中间没有空格 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str1 = &quot;Hello World&quot;</span><br><span class="line">str2 = &quot;Today is full of hope&quot;</span><br><span class="line">print(str1+str2)</span><br></pre></td></tr></table></figure>
+字符串不能直接与其他类型拼接在一起，只能转换成字符串以后再进行拼接</p>
+<p>乘法运算 * 重复输出字符串 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(str1 * 3)</span><br></pre></td></tr></table></figure>
+字符串单个访问str[],c起始位置为0 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(str1[2])</span><br></pre></td></tr></table></figure> 字符串的截取,包前不包后
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(str1[2:8])</span><br></pre></td></tr></table></figure> 成员运算符 in/not in
+如果字符串中包含给定字符，返回True，否则返回Fals
+转意字符;就是具有特殊含义的字符 换行 \ 反斜杠符号 ' 单引号 " 双引号
+向制表符 """ """ 中间可以放换行的字符串
+如果字符中有好多字符串都需要转义，就需要加入好多，
+为了简化，Python允许用r表示内部的字符串默认不转义 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;Today is full of &#x27;hope&#x27;&quot;)</span><br></pre></td></tr></table></figure>
+字符串操作函数
+以下为字符串的简单操作函数，由于用法简单，故直接列出来，没有进行代码演示</p>
+<p>len() 方法返回对象（字符、列表、元组等）长度或项目个数。 len =
+len(str1) eval() 函数用来执行一个字符串表达式，并返回表达式的值。</p>
+<p>string.lower() 转换 string 中所有大写字符为小写.</p>
+<p>string.upper() 转换 string 中的小写字母为大写</p>
+<p>string.swapcase() 翻转 string 中的大小写</p>
+<p>string.capitalize() 把字符串的第一个字符大写</p>
+<p>string.title() 返回"标题化"的
+string,就是说所有单词都是以大写开始，其余字母均为小写(见 istitle())</p>
+<p>string.center(width) 返回一个原字符串居中,并使用空格填充至长度 width
+的新字符串</p>
+<p>string.ljust(width) 返回一个原字符串左对齐,并使用空格填充至长度 width
+的新字符串</p>
+<p>string.rjust(width) 返回一个原字符串右对齐,并使用空格填充至长度 width
+的新字符串</p>
+<p>string.zfill(width) 返回长度为 width 的字符串，原字符串 string
+右对齐，前面填充0</p>
+<p>string.count(str, beg=0, end=len(string)) 返回 str 在 string
+里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str
+出现的次数</p>
+<p>string.find(str, beg=0, end=len(string)) 检测 str 是否包含在 string
+中，如果 beg 和 end
+指定范围，则检查是否包含在指定范围内，如果是返回开始的索引值，否则返回-1</p>
+<p>string.index(str, beg=0, end=len(string))
+跟find()方法一样，只不过如果str不在 string中会报一个异常.</p>
+<p>string.rindex( str, beg=0,end=len(string))类似于
+index()，不过是从右边开始.</p>
+<p>string.lstrip() 截掉字符串左侧指定的字符，默认为空格</p>
+<p>string.rstrip() 截掉字符串右侧指定的字符，默认为空格</p>
+<p>string.strip([obj])在 string 上执行 lstrip()和 rstrip()</p>
+<p>chr() 用一个范围在
+range（256）内的（就是0～255）整数作参数，返回一个对应的字符。</p>
+<p>ord()
+将一个ascall字符转换为对应的数字字符串拆分为列表用string.split("参数")
+参数为拆分的标志，默认为空格，也可以使用换行符等自己需要的字符
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lists = list(str1.split(&quot; &quot;))</span><br><span class="line">print(lists)</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/dawn/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/dawn/2018/04/02/python/python%E4%B8%AD%E9%9B%86%E5%90%88set%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" rel="prev" title="python中集合set的使用方法">
+                  <i class="fa fa-angle-left"></i> python中集合set的使用方法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/dawn/2018/04/04/python/python%E4%B8%ADdict%E5%AD%97%E5%85%B8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" rel="next" title="python中dict字典的使用方法">
+                  python中dict字典的使用方法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">DawN</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/dawn/js/comments.js"></script><script src="/dawn/js/utils.js"></script><script src="/dawn/js/motion.js"></script><script src="/dawn/js/schemes/muse.js"></script><script src="/dawn/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/dawn/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

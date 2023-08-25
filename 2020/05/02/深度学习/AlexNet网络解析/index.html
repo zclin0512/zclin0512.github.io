@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dawn/images/favicon.png">
+  <link rel="mask-icon" href="/dawn/images/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/dawn/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin512.gitee.io","root":"/dawn/","images":"/dawn/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/dawn/js/config.js"></script>
+
+    <meta name="description" content="原论文名：《ImageNet Classification with Deep Convolutional Neural Networks》  alexnet网络中引入了 Relu激活函数， 标准化LRN（Local Response Normalization）， Dropout，覆盖的池化操作(Overlapping Pooling) 等 1.ReLu激活函数 alexnet中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【经典卷积网络】AlexNet网络解析">
+<meta property="og:url" content="https://zclin512.gitee.io/dawn/2020/05/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/AlexNet%E7%BD%91%E7%BB%9C%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="破晓时分">
+<meta property="og:description" content="原论文名：《ImageNet Classification with Deep Convolutional Neural Networks》  alexnet网络中引入了 Relu激活函数， 标准化LRN（Local Response Normalization）， Dropout，覆盖的池化操作(Overlapping Pooling) 等 1.ReLu激活函数 alexnet中">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zclin512.gitee.io/dawn/2020/05/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/AlexNet%E7%BD%91%E7%BB%9C%E8%A7%A3%E6%9E%90/20200502143410964.png">
+<meta property="og:image" content="https://zclin512.gitee.io/dawn/2020/05/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/AlexNet%E7%BD%91%E7%BB%9C%E8%A7%A3%E6%9E%90/2020050214344876.png">
+<meta property="og:image" content="https://zclin512.gitee.io/dawn/2020/05/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/AlexNet%E7%BD%91%E7%BB%9C%E8%A7%A3%E6%9E%90/20200502143506206.png">
+<meta property="article:published_time" content="2020-05-02T06:48:15.000Z">
+<meta property="article:modified_time" content="2023-08-25T08:29:47.026Z">
+<meta property="article:author" content="DawN">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="pytorch">
+<meta property="article:tag" content="卷积神经网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zclin512.gitee.io/dawn/2020/05/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/AlexNet%E7%BD%91%E7%BB%9C%E8%A7%A3%E6%9E%90/20200502143410964.png">
+
+
+<link rel="canonical" href="https://zclin512.gitee.io/dawn/2020/05/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/AlexNet%E7%BD%91%E7%BB%9C%E8%A7%A3%E6%9E%90/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin512.gitee.io/dawn/2020/05/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/AlexNet%E7%BD%91%E7%BB%9C%E8%A7%A3%E6%9E%90/","path":"2020/05/02/深度学习/AlexNet网络解析/","title":"【经典卷积网络】AlexNet网络解析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【经典卷积网络】AlexNet网络解析 | 破晓时分</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/dawn/css/noscript.css">
+  </noscript>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/dawn/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">破晓时分</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">黎明将至</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/dawn/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/dawn/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/dawn/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#relu%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">1.ReLu激活函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#local-response-normalization%E5%B1%80%E9%83%A8%E5%93%8D%E5%BA%94%E5%BD%92%E4%B8%80%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">2.Local Response
+Normalization（局部响应归一化）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dropout"><span class="nav-number">3.</span> <span class="nav-text">3.Dropout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%8F%A0%E6%9C%80%E5%A4%A7%E6%B1%A0%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">4.重叠最大池化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-number">5.</span> <span class="nav-text">5.数据增强</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DawN</p>
+  <div class="site-description" itemprop="description">记录 归档 输出</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/dawn/archives/">
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/dawn/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/dawn/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zclin512.gitee.io/dawn/2020/05/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/AlexNet%E7%BD%91%E7%BB%9C%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/dawn/images/avatar.gif">
+      <meta itemprop="name" content="DawN">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="破晓时分">
+      <meta itemprop="description" content="记录 归档 输出">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【经典卷积网络】AlexNet网络解析 | 破晓时分">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【经典卷积网络】AlexNet网络解析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-02 14:48:15" itemprop="dateCreated datePublished" datetime="2020-05-02T14:48:15+08:00">2020-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-25 16:29:47" itemprop="dateModified" datetime="2023-08-25T16:29:47+08:00">2023-08-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/dawn/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>原论文名：《ImageNet Classification with Deep Convolutional Neural
+Networks》</p>
+<p><img src="20200502143410964.png"></p>
+<p>alexnet网络中引入了</p>
+<p>Relu激活函数，</p>
+<p>标准化LRN（Local Response Normalization），</p>
+<p>Dropout，覆盖的池化操作(Overlapping Pooling) 等</p>
+<h3 id="relu激活函数">1.ReLu激活函数</h3>
+<p>alexnet中较lenet更为先进的是使用ReLu作为激活函数来替代sigmoid，并证明了效果优于sigmoid。在此之前主要是通过sigmod来计算节点，该方法存在梯度消失和梯度爆炸的风险。relu能很大程度上解决这个问题，现在对relu
+有好多改进， 如prelu ，lrelu。主要是针对x&lt;0 的情况。</p>
+<h3 id="local-response-normalization局部响应归一化">2.Local Response
+Normalization（局部响应归一化）</h3>
+<p>在神经网络中，我们用激活函数将神经元的输出做一个非线性映射，但是tanh和sigmoid这些传统的激活函数的值域都是有范围的，但是ReLU激活函数得到的值域没有一个区间，所以要对ReLU得到的结果进行归一化。也就是Local
+Response Normalization。局部响应归一化的方法如下面的公式</p>
+<p><img src="2020050214344876.png"></p>
+<p>𝑎𝑥,𝑦𝑖 代表的是ReLU在第i个kernel的(x, y)位置的输出，n表示的是𝑎𝑥,𝑦𝑖
+的邻居个数，N表示该kernel的总数量。𝑏𝑥,𝑦𝑖表示的是LRN的结果。ReLU输出的结果和它周围一定范围的邻居做一个局部的归一化。总之就可以想象为在多个核上进行的归一化处理。</p>
+<h3 id="dropout">3.Dropout</h3>
+<p>Dropout也是经常说的一个概念，能够比较有效地防止神经网络的过拟合。
+相对于一般如线性模型使用正则的方法来防止模型过拟合，而在神经网络中Dropout通过修改神经网络本身结构来实现。对于某一层神经元，通过定义的概率来随机删除一些神经元，同时保持输入层与输出层神经元的个人不变，然后按照神经网络的学习方法进行参数更新，下一次迭代中，重新随机删除一些神经元，直至训练结束。</p>
+<h3 id="重叠最大池化">4.重叠最大池化</h3>
+<p>一般的池化层因为没有重叠，所以pool_size 和
+stride一般是相等的，例如8×8的一个图像，如果池化层的尺寸是2 ×
+2，那么经过池化后的操作得到的图像是 4
+×4大小，这种设置叫做不覆盖的池化操作，如果 stride &lt; pool_size,
+那么就会产生覆盖的池化操作，这种有点类似于convolutional化的操作，这样可以得到更准确的结果。在top-1，和top-5中使用覆盖的池化操作分别将error
+rate降低了0.4%和0.3%。论文中说，在训练模型过程中，覆盖的池化层更不容易过拟合。</p>
+<h3 id="数据增强">5.数据增强</h3>
+<p>通过裁剪旋转等方式增强了训练数据</p>
+<p><img src="20200502143506206.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> transforms</span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> Dataset,DataLoader</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> cv2,os</span><br><span class="line"> </span><br><span class="line"><span class="comment"># ================= create net ==========================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AlexNet</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(AlexNet, self).__init__()</span><br><span class="line">        self.conv1 = nn.Sequential(</span><br><span class="line">            nn.Conv2d(<span class="number">3</span>, <span class="number">96</span>, <span class="number">11</span>, <span class="number">4</span>, <span class="number">0</span>),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.MaxPool2d(<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line">        )</span><br><span class="line">        self.conv2 = nn.Sequential(</span><br><span class="line">            nn.Conv2d(<span class="number">96</span>, <span class="number">256</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.MaxPool2d(<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line">        )</span><br><span class="line">        self.conv3 = nn.Sequential(</span><br><span class="line">            nn.Conv2d(<span class="number">256</span>,<span class="number">384</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">        )</span><br><span class="line">        self.conv4 = nn.Sequential(</span><br><span class="line">            nn.Conv2d(<span class="number">384</span>,<span class="number">384</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">        )</span><br><span class="line">        self.conv5 = nn.Sequential(</span><br><span class="line">            nn.Conv2d(<span class="number">384</span>,<span class="number">256</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.MaxPool2d(<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line">        )</span><br><span class="line">        self.dense = nn.Sequential(</span><br><span class="line">            nn.Linear(<span class="number">9216</span>, <span class="number">4096</span>),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Dropout(<span class="number">0.5</span>),</span><br><span class="line">            nn.Linear(<span class="number">4096</span>, <span class="number">4096</span>),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Dropout(<span class="number">0.5</span>),</span><br><span class="line">            nn.Linear(<span class="number">4096</span>, <span class="number">1000</span>)</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        conv1_out = self.conv1(x)</span><br><span class="line">        conv2_out = self.conv2(conv1_out)</span><br><span class="line">        conv3_out = self.conv3(conv2_out)</span><br><span class="line">        conv4_out = self.conv4(conv3_out)</span><br><span class="line">        conv5_out = self.conv5(conv4_out)</span><br><span class="line">        res = conv5_out.view(conv5_out.size(<span class="number">0</span>), -<span class="number">1</span>)</span><br><span class="line">        out = self.dense(res)</span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/dawn/tags/python/" rel="tag"># python</a>
+              <a href="/dawn/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag"># 图像处理</a>
+              <a href="/dawn/tags/pytorch/" rel="tag"># pytorch</a>
+              <a href="/dawn/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag"># 卷积神经网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/dawn/2020/05/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/LeNet-5%E7%BD%91%E7%BB%9C%E8%A7%A3%E6%9E%90/" rel="prev" title="【经典卷积网络】LeNet-5网络解析">
+                  <i class="fa fa-angle-left"></i> 【经典卷积网络】LeNet-5网络解析
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/dawn/2020/05/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E4%BA%A4%E5%B9%B6%E6%AF%94/" rel="next" title="目标检测中计算图像的交并比（IOU)">
+                  目标检测中计算图像的交并比（IOU) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">DawN</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/dawn/js/comments.js"></script><script src="/dawn/js/utils.js"></script><script src="/dawn/js/motion.js"></script><script src="/dawn/js/schemes/muse.js"></script><script src="/dawn/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/dawn/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

@@ -5,24 +5,24 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
-  <link rel="mask-icon" href="/images/favicon.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dawn/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dawn/images/favicon.png">
+  <link rel="mask-icon" href="/dawn/images/favicon.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/dawn/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin0512.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zclin512.gitee.io","root":"/dawn/","images":"/dawn/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/dawn/js/config.js"></script>
 
     <meta name="description" content="promise将异步操作队列化，按照期望的顺序执行，返回符合预期的结果。 状态说明 promise包含pending，fulfilled，rejected三种状态。  pending 指初始等待状态，初始化 promise 时的状态 resolve 指已经解决，将 promise 状态设置为fulfilled reject 指拒绝处理，将 promise 状态设置为rejected">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Promise">
-<meta property="og:url" content="https://zclin0512.github.io/2023/01/24/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JavaScript/Promise/index.html">
+<meta property="og:url" content="https://zclin512.gitee.io/dawn/2023/01/24/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JavaScript/Promise/index.html">
 <meta property="og:site_name" content="破晓时分">
 <meta property="og:description" content="promise将异步操作队列化，按照期望的顺序执行，返回符合预期的结果。 状态说明 promise包含pending，fulfilled，rejected三种状态。  pending 指初始等待状态，初始化 promise 时的状态 resolve 指已经解决，将 promise 状态设置为fulfilled reject 指拒绝处理，将 promise 状态设置为rejected">
 <meta property="og:locale" content="zh_CN">
@@ -35,11 +35,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://zclin0512.github.io/2023/01/24/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JavaScript/Promise/">
+<link rel="canonical" href="https://zclin512.gitee.io/dawn/2023/01/24/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JavaScript/Promise/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin0512.github.io/2023/01/24/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JavaScript/Promise/","path":"2023/01/24/前端基础/JavaScript/Promise/","title":"Promise"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zclin512.gitee.io/dawn/2023/01/24/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JavaScript/Promise/","path":"2023/01/24/前端基础/JavaScript/Promise/","title":"Promise"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Promise | 破晓时分</title>
@@ -53,7 +53,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
+    <link rel="stylesheet" href="/dawn/css/noscript.css">
   </noscript>
 </head>
 
@@ -73,7 +73,7 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="/dawn/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">破晓时分</p>
       <i class="logo-line"></i>
@@ -90,7 +90,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/dawn/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/dawn/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/dawn/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
   </ul>
 </nav>
 
@@ -127,19 +127,19 @@
 <div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">45</span>
+        <a href="/dawn/archives/">
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+          <a href="/dawn/categories/">
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+          <a href="/dawn/tags/">
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -166,10 +166,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zclin0512.github.io/2023/01/24/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JavaScript/Promise/">
+    <link itemprop="mainEntityOfPage" href="https://zclin512.gitee.io/dawn/2023/01/24/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JavaScript/Promise/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/dawn/images/avatar.gif">
       <meta itemprop="name" content="DawN">
     </span>
 
@@ -210,7 +210,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+          <a href="/dawn/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
         </span>
     </span>
 
@@ -295,21 +295,21 @@ promise.then/catch 的方式</li>
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/html/" rel="tag"># html</a>
-              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
-              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/dawn/tags/html/" rel="tag"># html</a>
+              <a href="/dawn/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+              <a href="/dawn/tags/JavaScript/" rel="tag"># JavaScript</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/01/24/%E5%85%B6%E4%BB%96/vscode%E7%A6%BB%E7%BA%BF%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/" rel="prev" title="vscode离线插件安装">
+                <a href="/dawn/2023/01/24/%E5%85%B6%E4%BB%96/vscode%E7%A6%BB%E7%BA%BF%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/" rel="prev" title="vscode离线插件安装">
                   <i class="fa fa-angle-left"></i> vscode离线插件安装
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/02/24/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JavaScript/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF/" rel="next" title="原型与继承">
+                <a href="/dawn/2023/02/24/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JavaScript/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF/" rel="next" title="原型与继承">
                   原型与继承 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
@@ -360,7 +360,7 @@ promise.then/catch 的方式</li>
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/dawn/js/comments.js"></script><script src="/dawn/js/utils.js"></script><script src="/dawn/js/motion.js"></script><script src="/dawn/js/schemes/muse.js"></script><script src="/dawn/js/next-boot.js"></script>
 
   
 
@@ -377,7 +377,7 @@ promise.then/catch 的方式</li>
   
 
   <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/js/third-party/math/mathjax.js"></script>
+<script src="/dawn/js/third-party/math/mathjax.js"></script>
 
 
 
